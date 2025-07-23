@@ -1,0 +1,54 @@
+{
+  "name": "moovinleads",
+  "version": "1.0.0",
+  "description": "AI-powered Lead Capture Widget for Moving Companies - Capture, qualify, and convert leads with intelligent forms",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run build:css && vite build && npm run test:chain",
+    "build:css": "node build-css.js",
+    "build:watch": "vite build --watch",
+    "preview": "vite preview",
+    "test": "node tests/run-all-tests.js",
+    "test:chain": "node tests/post-build-test-chain.js",
+    "test:build": "node tests/build-validation.js",
+    "test:components": "node tests/component-tests.js",
+    "test:integration": "node tests/integration-tests.js",
+    "test:quick": "node quick-test.js",
+    "test:debug": "node debug-widget.js"
+  },
+  "keywords": [
+    "wordpress",
+    "plugin",
+    "react",
+    "shadow-dom",
+    "lead-capture",
+    "moving-companies",
+    "ai",
+    "leads",
+    "conversion"
+  ],
+  "author": "Your Name",
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "puppeteer": "^24.15.0",
+    "terser": "^5.43.1",
+    "vite": "^5.1.0"
+  },
+  "dependencies": {
+    "@r2wc/react-to-web-component": "^2.0.3",
+    "@radix-ui/react-dialog": "^1.1.14",
+    "@radix-ui/react-dropdown-menu": "^2.1.15",
+    "@radix-ui/react-label": "^2.1.7",
+    "@radix-ui/react-switch": "^1.2.5",
+    "@radix-ui/react-tabs": "^1.1.12",
+    "@tailwindcss/vite": "^4.1.11",
+    "framer-motion": "^11.0.3",
+    "lucide-react": "^0.525.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^4.1.11",
+    "zustand": "^5.0.6"
+  }
+}

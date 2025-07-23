@@ -1,0 +1,166 @@
+{
+  "categories": [
+    {
+      "id": "boxes",
+      "name": "Moving Boxes",
+      "description": "Various sizes of moving boxes for your belongings",
+      "icon": "Package",
+      "order": 1,
+      "products": [
+        {
+          "id": "small-box",
+          "name": "Small Box",
+          "description": "Perfect for books and heavy items",
+          "dimensions": "16\" x 12\" x 12\"",
+          "price": 2.50,
+          "icon": "Package",
+          "defaultQuantity": 0
+        },
+        {
+          "id": "medium-box",
+          "name": "Medium Box",
+          "description": "Great for clothes and kitchen items",
+          "dimensions": "18\" x 14\" x 12\"",
+          "price": 3.25,
+          "icon": "Package",
+          "defaultQuantity": 0
+        },
+        {
+          "id": "large-box",
+          "name": "Large Box",
+          "description": "Ideal for linens and lightweight items",
+          "dimensions": "20\" x 20\" x 15\"",
+          "price": 4.75,
+          "icon": "Package",
+          "defaultQuantity": 0
+        },
+        {
+          "id": "wardrobe-box",
+          "name": "Wardrobe Box",
+          "description": "Hanging clothes box with bar",
+          "dimensions": "24\" x 20\" x 46\"",
+          "price": 12.99,
+          "icon": "Archive",
+          "defaultQuantity": 0
+        }
+      ]
+    },
+    {
+      "id": "packing-materials",
+      "name": "Packing Materials",
+      "description": "Essential materials to protect your items",
+      "icon": "Shield",
+      "order": 2,
+      "products": [
+        {
+          "id": "packing-tape",
+          "name": "Packing Tape",
+          "description": "Heavy-duty adhesive tape",
+          "dimensions": "2\" x 55 yards",
+          "price": 4.99,
+          "icon": "Wrench",
+          "defaultQuantity": 0
+        },
+        {
+          "id": "bubble-wrap",
+          "name": "Bubble Wrap",
+          "description": "Protective bubble wrap",
+          "dimensions": "12\" x 25 feet",
+          "price": 8.99,
+          "icon": "Shield",
+          "defaultQuantity": 0
+        },
+        {
+          "id": "packing-paper",
+          "name": "Packing Paper",
+          "description": "Newsprint packing paper",
+          "dimensions": "24\" x 36\" (25 lbs)",
+          "price": 12.99,
+          "icon": "File",
+          "defaultQuantity": 0
+        },
+        {
+          "id": "markers",
+          "name": "Permanent Markers",
+          "description": "Pack of 4 black markers",
+          "dimensions": "Pack of 4",
+          "price": 6.99,
+          "icon": "Edit",
+          "defaultQuantity": 0
+        }
+      ]
+    },
+    {
+      "id": "furniture-protection",
+      "name": "Furniture Protection",
+      "description": "Protect your furniture during the move",
+      "icon": "Home",
+      "order": 3,
+      "products": [
+        {
+          "id": "furniture-pads",
+          "name": "Furniture Pads",
+          "description": "Heavy-duty moving blankets",
+          "dimensions": "72\" x 80\"",
+          "price": 15.99,
+          "icon": "Home",
+          "defaultQuantity": 0
+        },
+        {
+          "id": "mattress-covers",
+          "name": "Mattress Covers",
+          "description": "Plastic mattress protectors",
+          "dimensions": "Queen/King size",
+          "price": 8.99,
+          "icon": "Square",
+          "defaultQuantity": 0
+        },
+        {
+          "id": "stretch-wrap",
+          "name": "Stretch Wrap",
+          "description": "Industrial strength plastic wrap",
+          "dimensions": "18\" x 1500 feet",
+          "price": 11.99,
+          "icon": "RotateCcw",
+          "defaultQuantity": 0
+        }
+      ]
+    },
+    {
+      "id": "specialty-items",
+      "name": "Specialty Items",
+      "description": "Specialized packing for fragile items",
+      "icon": "Star",
+      "order": 4,
+      "products": [
+        {
+          "id": "dish-pack",
+          "name": "Dish Pack Kit",
+          "description": "Complete kit for dishes and glassware",
+          "dimensions": "Kit with dividers",
+          "price": 24.99,
+          "icon": "Utensils",
+          "defaultQuantity": 0
+        },
+        {
+          "id": "picture-boxes",
+          "name": "Picture Boxes",
+          "description": "Adjustable boxes for artwork",
+          "dimensions": "Adjustable up to 40\"",
+          "price": 18.99,
+          "icon": "Frame",
+          "defaultQuantity": 0
+        },
+        {
+          "id": "tv-box",
+          "name": "TV Moving Box",
+          "description": "Custom box for flat screen TVs",
+          "dimensions": "Up to 65\" TV",
+          "price": 29.99,
+          "icon": "Monitor",
+          "defaultQuantity": 0
+        }
+      ]
+    }
+  ]
+}

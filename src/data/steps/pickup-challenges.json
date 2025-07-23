@@ -1,0 +1,75 @@
+{
+  "id": "pickup-challenges",
+  "title": "Pickup Location Challenges",
+  "subtitle": "Help us prepare the right equipment and crew for your pickup location",
+  "type": "step",
+  "headerIcon": {
+    "name": "AlertTriangle",
+    "color": "amber-500",
+    "background": "amber-500/10"
+  },
+  "layout": {
+    "type": "challenges",
+    "centered": false
+  },
+  "challengeType": "pickup",
+  "commonChallenges": [
+    {
+      "id": "stairs",
+      "label": "Stairs (flights)",
+      "icon": "ArrowUp",
+      "hasInput": true,
+      "inputType": "number",
+      "inputPlaceholder": "Number of flights"
+    },
+    {
+      "id": "elevator",
+      "label": "Elevator available",
+      "icon": "Building",
+      "hasInput": false
+    },
+    {
+      "id": "narrow_doorway",
+      "label": "Narrow doorways",
+      "icon": "AlertTriangle",
+      "hasInput": false
+    },
+    {
+      "id": "parking_distance",
+      "label": "Long distance from parking",
+      "icon": "Truck",
+      "hasInput": true,
+      "inputType": "text",
+      "inputPlaceholder": "Approximate distance"
+    },
+    {
+      "id": "heavy_items",
+      "label": "Heavy/bulky items", 
+      "icon": "AlertTriangle",
+      "hasInput": false
+    },
+    {
+      "id": "fragile_items",
+      "label": "Fragile items",
+      "icon": "AlertTriangle",
+      "hasInput": false
+    }
+  ],
+  "validation": {
+    "field": "addresses.pickup.challenges",
+    "required": false
+  },
+  "buttons": {
+    "secondary": {
+      "text": "Skip",
+      "action": "skip"
+    },
+    "primary": {
+      "text": "Continue",
+      "action": "submit"
+    }
+  },
+  "footer": {
+    "note": "This helps us bring the right equipment and estimate time accurately"
+  }
+}

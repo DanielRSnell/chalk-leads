@@ -1,0 +1,50 @@
+{
+  "id": "date-time",
+  "title": "When do you need to move?",
+  "subtitle": "Select your preferred moving date and time",
+  "fields": [
+    {
+      "id": "move-date",
+      "type": "date",
+      "label": "Move Date",
+      "placeholder": "Select date",
+      "icon": "Calendar",
+      "required": true,
+      "validation": {
+        "field": "moveDate",
+        "errorMessage": "Please select a move date"
+      }
+    },
+    {
+      "id": "time-window",
+      "type": "select",
+      "label": "Time Window",
+      "placeholder": "Select time",
+      "icon": "Clock",
+      "required": true,
+      "options": [
+        {"value": "morning", "label": "Morning (8AM - 12PM)"},
+        {"value": "afternoon", "label": "Afternoon (12PM - 4PM)"},
+        {"value": "flexible", "label": "Flexible"}
+      ],
+      "validation": {
+        "field": "timeWindow",
+        "errorMessage": "Please select a time window"
+      }
+    }
+  ],
+  "buttons": {
+    "primary": {
+      "text": "Continue",
+      "action": "submit",
+      "color": "primary"
+    }
+  },
+  "layout": {
+    "type": "form",
+    "centered": false
+  },
+  "validation": {
+    "required": true
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "move-size",
+  "title": "What size is your move?",
+  "subtitle": "Select the size that best describes your move",
+  "options": [
+    {
+      "id": "studio",
+      "value": "studio",
+      "label": "Studio",
+      "description": "Starting at $350",
+      "type": "button"
+    },
+    {
+      "id": "1-bedroom",
+      "value": "1-bedroom", 
+      "label": "1 Bedroom",
+      "description": "Starting at $475",
+      "type": "button"
+    },
+    {
+      "id": "2-bedroom",
+      "value": "2-bedroom",
+      "label": "2 Bedroom",
+      "description": "Starting at $650", 
+      "type": "button"
+    },
+    {
+      "id": "3-bedroom",
+      "value": "3-bedroom",
+      "label": "3 Bedroom",
+      "description": "Starting at $825",
+      "type": "button"
+    },
+    {
+      "id": "4-bedroom", 
+      "value": "4-bedroom",
+      "label": "4 Bedroom",
+      "description": "Starting at $1,050",
+      "type": "button"
+    },
+    {
+      "id": "5-bedroom+",
+      "value": "5-bedroom+",
+      "label": "5+ Bedroom",
+      "description": "Starting at $1,300",
+      "type": "button"
+    }
+  ],
+  "buttons": {
+    "primary": {
+      "text": "Continue", 
+      "action": "auto"
+    }
+  },
+  "layout": {
+    "type": "grid",
+    "columns": 2,
+    "centered": false
+  },
+  "validation": {
+    "required": true,
+    "field": "moveSize"
+  }
+}

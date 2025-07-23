@@ -1,0 +1,46 @@
+{
+  "id": "welcome",
+  "title": "How can we help?",
+  "subtitle": null,
+  "prompt": {
+    "message": "How can we help you today?",
+    "type": "avatar"
+  },
+  "options": [
+    {
+      "id": "full-service",
+      "value": "full-service",
+      "title": "Full Service Moving",
+      "description": "We bring the crew and the trucks",
+      "icon": "Truck",
+      "type": "service"
+    },
+    {
+      "id": "labor-only",
+      "value": "labor-only", 
+      "title": "Labor Only Services",
+      "description": "Our professionals help you load and/or unload into your own truck",
+      "icon": "Users",
+      "type": "service"
+    }
+  ],
+  "buttons": {
+    "primary": {
+      "text": "Continue",
+      "action": "auto"
+    },
+    "secondary": {
+      "text": "I have an existing booking",
+      "action": "existing_booking"
+    }
+  },
+  "layout": {
+    "type": "grid",
+    "columns": 1,
+    "centered": true
+  },
+  "validation": {
+    "required": true,
+    "field": "serviceType"
+  }
+}

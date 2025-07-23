@@ -1,0 +1,46 @@
+{
+  "id": "move-type",
+  "title": "What type of location?",
+  "subtitle": "Select the type of location you're moving between",
+  "options": [
+    {
+      "id": "residential",
+      "value": "residential",
+      "title": "Residential",
+      "description": "Home, apartment, condo",
+      "icon": "Home",
+      "type": "service"
+    },
+    {
+      "id": "commercial",
+      "value": "commercial",
+      "title": "Commercial",
+      "description": "Office, retail, warehouse",
+      "icon": "Building",
+      "type": "service"
+    },
+    {
+      "id": "storage",
+      "value": "storage",
+      "title": "Storage Unit",
+      "description": "Self-storage facility",
+      "icon": "Archive",
+      "type": "service"
+    }
+  ],
+  "buttons": {
+    "primary": {
+      "text": "Continue",
+      "action": "auto"
+    }
+  },
+  "layout": {
+    "type": "grid",
+    "columns": 1,
+    "centered": false
+  },
+  "validation": {
+    "required": true,
+    "field": "locationType"
+  }
+}

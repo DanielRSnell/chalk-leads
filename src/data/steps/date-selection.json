@@ -1,0 +1,21 @@
+{
+  "id": "date-selection",
+  "title": "When do you need to move?",
+  "subtitle": "Select your preferred moving date",
+  "type": "step",
+  "layout": {
+    "type": "calendar",
+    "centered": true
+  },
+  "component": "calendar",
+  "validation": {
+    "field": "moveDate",
+    "required": true
+  },
+  "buttons": {
+    "primary": {
+      "text": "Continue",
+      "action": "auto"
+    }
+  }
+}

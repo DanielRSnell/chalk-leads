@@ -1,0 +1,45 @@
+{
+  "id": "additional-services",
+  "title": "Any additional services?",
+  "subtitle": "Select any additional services you might need",
+  "options": [
+    {
+      "id": "packing",
+      "value": "packing",
+      "title": "Packing Services",
+      "description": "Professional packing of your belongings",
+      "icon": "Package",
+      "type": "service-toggle"
+    },
+    {
+      "id": "insurance", 
+      "value": "insurance",
+      "title": "Moving Insurance",
+      "description": "Additional protection for your items",
+      "icon": "Shield",
+      "type": "service-toggle"
+    },
+    {
+      "id": "disassembly",
+      "value": "disassembly", 
+      "title": "Furniture Disassembly",
+      "description": "Take apart and reassemble furniture",
+      "icon": "Wrench",
+      "type": "service-toggle"
+    }
+  ],
+  "buttons": {
+    "primary": {
+      "text": "Continue",
+      "action": "submit"
+    }
+  },
+  "layout": {
+    "type": "list",
+    "selectable": "multiple"
+  },
+  "validation": {
+    "required": false,
+    "field": "additionalServices"
+  }
+}

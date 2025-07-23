@@ -1,0 +1,89 @@
+{
+  "challenges": {
+    "stairs": {
+      "type": "per_flight",
+      "baseModifier": 45,
+      "description": "Additional cost per flight of stairs",
+      "maxFlights": 10
+    },
+    "elevator": {
+      "type": "discount",
+      "modifier": -0.05,
+      "description": "5% discount when elevator is available"
+    },
+    "narrow_doorway": {
+      "type": "fixed",
+      "modifier": 85,
+      "description": "Fixed fee for narrow doorway complications"
+    },
+    "parking_distance": {
+      "type": "percentage",
+      "modifier": 0.15,
+      "description": "15% increase for long distance from parking"
+    },
+    "heavy_items": {
+      "type": "percentage",
+      "modifier": 0.12,
+      "description": "12% increase for heavy/bulky items"
+    },
+    "fragile_items": {
+      "type": "fixed",
+      "modifier": 125,
+      "description": "Fixed fee for extra care with fragile items"
+    },
+    "assembly_required": {
+      "type": "fixed",
+      "modifier": 150,
+      "description": "Furniture assembly/disassembly service"
+    },
+    "fragile_placement": {
+      "type": "fixed",
+      "modifier": 75,
+      "description": "Careful placement of delicate items"
+    }
+  },
+  "additionalServices": {
+    "packing": {
+      "type": "percentage",
+      "modifier": 0.25,
+      "description": "25% increase for packing services"
+    },
+    "insurance": {
+      "type": "percentage", 
+      "modifier": 0.08,
+      "description": "8% increase for additional insurance coverage"
+    },
+    "disassembly": {
+      "type": "fixed",
+      "modifier": 200,
+      "description": "Furniture disassembly and reassembly service"
+    },
+    "storage": {
+      "type": "fixed",
+      "modifier": 150,
+      "description": "Temporary storage service"
+    },
+    "cleaning": {
+      "type": "fixed",
+      "modifier": 175,
+      "description": "Post-move cleaning service"
+    }
+  },
+  "distance": {
+    "local": {
+      "range": "0-25 miles",
+      "multiplier": 1.0,
+      "description": "Local move within 25 miles"
+    },
+    "regional": {
+      "range": "26-100 miles", 
+      "multiplier": 1.35,
+      "description": "Regional move 26-100 miles"
+    },
+    "long_distance": {
+      "range": "100+ miles",
+      "multiplier": 2.0,
+      "description": "Long distance move over 100 miles"
+    }
+  }
+}

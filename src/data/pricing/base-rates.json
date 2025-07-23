@@ -1,0 +1,72 @@
+{
+  "moveSize": {
+    "studio": {
+      "basePrice": 350,
+      "hours": 3,
+      "description": "Studio apartment - basic move"
+    },
+    "1-bedroom": {
+      "basePrice": 475,
+      "hours": 4,
+      "description": "1 bedroom apartment/home"
+    },
+    "2-bedroom": {
+      "basePrice": 650,
+      "hours": 5,
+      "description": "2 bedroom apartment/home"
+    },
+    "3-bedroom": {
+      "basePrice": 825,
+      "hours": 6.5,
+      "description": "3 bedroom apartment/home"
+    },
+    "4-bedroom": {
+      "basePrice": 1050,
+      "hours": 8,
+      "description": "4 bedroom apartment/home"
+    },
+    "5-bedroom+": {
+      "basePrice": 1300,
+      "hours": 10,
+      "description": "5+ bedroom apartment/home"
+    }
+  },
+  "serviceType": {
+    "full-service": {
+      "multiplier": 1.0,
+      "description": "Full service moving with crew and trucks"
+    },
+    "labor-only": {
+      "multiplier": 0.65,
+      "description": "Labor only services - customer provides truck"
+    }
+  },
+  "laborType": {
+    "loading-unloading": {
+      "multiplier": 1.0,
+      "description": "Complete loading and unloading service"
+    },
+    "loading-only": {
+      "multiplier": 0.6,
+      "description": "Loading service only"
+    },
+    "unloading-only": {
+      "multiplier": 0.6,
+      "description": "Unloading service only"
+    }
+  },
+  "timeWindow": {
+    "morning": {
+      "multiplier": 1.0,
+      "description": "Standard morning hours"
+    },
+    "afternoon": {
+      "multiplier": 1.0,
+      "description": "Standard afternoon hours"
+    },
+    "evening": {
+      "multiplier": 1.15,
+      "description": "Evening hours - 15% premium"
+    }
+  }
+}

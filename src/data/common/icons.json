@@ -1,0 +1,44 @@
+{
+  "iconMapping": {
+    "Truck": "Truck",
+    "Users": "Users", 
+    "ArrowUpDown": "ArrowUpDown",
+    "ArrowUp": "ArrowUp",
+    "ArrowDown": "ArrowDown",
+    "MapPin": "MapPin",
+    "Navigation": "Navigation",
+    "AlertTriangle": "AlertTriangle",
+    "Building": "Building",
+    "Package": "Package",
+    "Shield": "Shield",
+    "Wrench": "Wrench",
+    "Plus": "Plus",
+    "X": "X",
+    "Calendar": "Calendar",
+    "Clock": "Clock",
+    "User": "User",
+    "Mail": "Mail",
+    "Phone": "Phone",
+    "Check": "Check",
+    "MessageCircle": "MessageCircle",
+    "Home": "Home",
+    "Archive": "Archive",
+    "Sunrise": "Sunrise",
+    "Sun": "Sun",
+    "Sunset": "Sunset"
+  },
+  "iconSizes": {
+    "small": "w-4 h-4",
+    "medium": "w-5 h-5", 
+    "large": "w-6 h-6",
+    "xlarge": "w-8 h-8"
+  },
+  "iconColors": {
+    "primary": "text-primary",
+    "success": "text-success",
+    "warning": "text-amber-500",
+    "danger": "text-destructive",
+    "muted": "text-muted-foreground",
+    "foreground": "text-foreground"
+  }
+}

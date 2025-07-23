@@ -1,0 +1,47 @@
+{
+  "id": "time-selection",
+  "title": "What's your preferred start time?",
+  "subtitle": "Choose the time window that works best for you",
+  "type": "step",
+  "layout": {
+    "type": "grid",
+    "columns": 1,
+    "centered": false
+  },
+  "options": [
+    {
+      "id": "morning",
+      "title": "Morning",
+      "description": "8AM—12PM",
+      "value": "morning",
+      "type": "service",
+      "icon": "Sunrise"
+    },
+    {
+      "id": "afternoon", 
+      "title": "Afternoon",
+      "description": "12PM—4PM",
+      "value": "afternoon",
+      "type": "service",
+      "icon": "Sun"
+    },
+    {
+      "id": "evening",
+      "title": "Evening",
+      "description": "4PM—8PM",
+      "value": "evening",
+      "type": "service",
+      "icon": "Sunset"
+    }
+  ],
+  "validation": {
+    "field": "timeWindow",
+    "required": true
+  },
+  "buttons": {
+    "primary": {
+      "text": "Continue",
+      "action": "auto"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "pickup-location",
+  "title": "Where are you moving from?",
+  "subtitle": "Enter your pickup location so we can provide accurate pricing and logistics",
+  "headerIcon": {
+    "name": "MapPin",
+    "color": "primary",
+    "background": "primary/10"
+  },
+  "fields": [
+    {
+      "id": "pickup-address",
+      "type": "address",
+      "label": "Pickup Address",
+      "placeholder": "Enter your current address...",
+      "icon": "MapPin",
+      "required": true,
+      "validation": {
+        "field": "addresses.pickup.address",
+        "errorMessage": "Please provide a pickup address"
+      },
+      "features": {
+        "googleMapsPreview": true,
+        "autoComplete": true
+      }
+    }
+  ],
+  "buttons": {
+    "primary": {
+      "text": "Continue",
+      "action": "submit",
+      "color": "primary"
+    }
+  },
+  "layout": {
+    "type": "form",
+    "centered": false
+  },
+  "footer": {
+    "note": "Used for accurate pricing and route optimization"
+  }
+}

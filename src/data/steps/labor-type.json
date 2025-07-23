@@ -1,0 +1,51 @@
+{
+  "id": "labor-type",
+  "title": "What do you need help with?",
+  "subtitle": "Select the type of labor assistance you need",
+  "conditional": {
+    "field": "serviceType",
+    "value": "labor-only",
+    "skipIfNot": true
+  },
+  "options": [
+    {
+      "id": "loading-unloading",
+      "value": "loading-unloading",
+      "title": "Loading & Unloading", 
+      "description": "Our crews help you load at a starting location and unload at a destination location",
+      "icon": "ArrowUpDown",
+      "type": "service"
+    },
+    {
+      "id": "loading-only",
+      "value": "loading-only",
+      "title": "Loading Only",
+      "description": "We help you load your items",
+      "icon": "ArrowUp", 
+      "type": "service"
+    },
+    {
+      "id": "unloading-only", 
+      "value": "unloading-only",
+      "title": "Unloading Only",
+      "description": "We help you unload previously loaded items",
+      "icon": "ArrowDown",
+      "type": "service"
+    }
+  ],
+  "buttons": {
+    "primary": {
+      "text": "Continue",
+      "action": "auto"
+    }
+  },
+  "layout": {
+    "type": "grid",
+    "columns": 1,
+    "centered": false
+  },
+  "validation": {
+    "required": true,
+    "field": "laborType"
+  }
+}

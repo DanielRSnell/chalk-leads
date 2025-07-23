@@ -1,0 +1,43 @@
+{
+  "id": "moving-supplies-question",
+  "title": "Do you need moving supplies?",
+  "subtitle": "We offer high-quality packing supplies delivered to your door",
+  "headerIcon": {
+    "name": "Package",
+    "color": "primary",
+    "background": "primary/10"
+  },
+  "options": [
+    {
+      "id": "supplies-yes",
+      "value": "yes",
+      "title": "Yes, I need supplies",
+      "description": "Browse our selection of moving supplies",
+      "icon": "Package",
+      "type": "service"
+    },
+    {
+      "id": "supplies-no",
+      "value": "no",
+      "title": "No, I have my own",
+      "description": "I already have all necessary packing supplies",
+      "icon": "X",
+      "type": "service"
+    }
+  ],
+  "buttons": {
+    "primary": {
+      "text": "Continue",
+      "action": "auto"
+    }
+  },
+  "layout": {
+    "type": "grid",
+    "columns": 1,
+    "centered": false
+  },
+  "validation": {
+    "required": true,
+    "field": "needsSupplies"
+  }
+}

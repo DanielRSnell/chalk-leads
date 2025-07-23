@@ -1,0 +1,42 @@
+{
+  "id": "destination-location",
+  "title": "Where are you moving to?",
+  "subtitle": "Enter your destination address to complete the route planning",
+  "headerIcon": {
+    "name": "Navigation",
+    "color": "success",
+    "background": "success/10"
+  },
+  "fields": [
+    {
+      "id": "destination-address",
+      "type": "address",
+      "label": "Destination Address",
+      "placeholder": "Enter your destination address...",
+      "icon": "Navigation",
+      "required": true,
+      "validation": {
+        "field": "addresses.destination.address",
+        "errorMessage": "Please provide a destination address"
+      },
+      "features": {
+        "googleMapsPreview": true,
+        "autoComplete": true
+      }
+    }
+  ],
+  "buttons": {
+    "primary": {
+      "text": "Continue",
+      "action": "submit",
+      "color": "success"
+    }
+  },
+  "layout": {
+    "type": "form",
+    "centered": false
+  },
+  "footer": {
+    "note": "Final step for route calculation and logistics planning"
+  }
+}
