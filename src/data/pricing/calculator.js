@@ -13,6 +13,8 @@ export function calculateMovingEstimate(formData) {
     basePrice: 0,
     serviceType: '',
     timeWindow: '',
+    distance: 0,
+    distanceCost: 0,
     challenges: [],
     additionalServices: [],
     movingSupplies: [],
@@ -77,9 +79,18 @@ export function calculateMovingEstimate(formData) {
     }
   }
 
+  // 5. Calculate distance-based cost
+  const distance = formData.routeDistance || 0; // Distance in miles from Mapbox Directions API
+  if (distance > baseRates.distance.minimumDistance) {
+    const distanceCost = distance * baseRates.distance.costPerMile;
+    breakdown.distance = distance;
+    breakdown.distanceCost = distanceCost;
+    basePrice += distanceCost;
+  }
+
   let runningTotal = basePrice;
 
-  // 5. Apply pickup location challenges
+  // 6. Apply pickup location challenges
   const pickupChallenges = formData.addresses?.pickup?.challenges || [];
   pickupChallenges.forEach(challenge => {
     const modifier = applyChallenge(challenge, runningTotal);
@@ -92,7 +103,7 @@ export function calculateMovingEstimate(formData) {
     }
   });
 
-  // 6. Apply destination location challenges
+  // 7. Apply destination location challenges
   const destinationChallenges = formData.addresses?.destination?.challenges || [];
   destinationChallenges.forEach(challenge => {
     const modifier = applyChallenge(challenge, runningTotal);
@@ -105,7 +116,7 @@ export function calculateMovingEstimate(formData) {
     }
   });
 
-  // 7. Apply additional services
+  // 8. Apply additional services
   const additionalServices = formData.additionalServices || [];
   additionalServices.forEach(service => {
     const serviceId = service.id;
@@ -131,7 +142,7 @@ export function calculateMovingEstimate(formData) {
     }
   });
 
-  // 8. Apply moving supplies cost
+  // 9. Apply moving supplies cost
   breakdown.movingSupplies = [];
   const movingSupplies = formData.movingSupplies || {};
   let suppliesTotal = 0;
@@ -152,7 +163,7 @@ export function calculateMovingEstimate(formData) {
   
   runningTotal += suppliesTotal;
 
-  // 9. Calculate final totals
+  // 10. Calculate final totals
   breakdown.subtotal = runningTotal;
   breakdown.tax = runningTotal * 0.08; // 8% tax
   breakdown.total = breakdown.subtotal + breakdown.tax;

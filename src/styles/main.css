@@ -26,7 +26,7 @@
   --color-primary-foreground: #1A1A1A;
   --color-secondary: #F3F4F6;
   --color-secondary-foreground: #1A1A1A;
-  --color-muted: #F9FAFB;
+  --color-muted: #E5E7EB;
   --color-muted-foreground: #6B7280;
   --color-accent: #F4C443;
   --color-accent-foreground: #1A1A1A;
@@ -291,6 +291,17 @@
 :host .input-icon {
   position: absolute;
   left: calc(var(--spacing) * 4);
+  top: calc(var(--spacing) * 2.5);
+  width: 1.25rem;
+  height: 1.25rem;
+  pointer-events: none;
+  color: var(--color-muted-foreground);
+  transition: color 0.2s ease;
+}
+
+:host .input-icon-right {
+  position: absolute;
+  right: calc(var(--spacing) * 4);
   top: calc(var(--spacing) * 2.5);
   width: 1.25rem;
   height: 1.25rem;

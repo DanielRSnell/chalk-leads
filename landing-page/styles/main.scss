@@ -1,0 +1,101 @@
+// SVG Icons - using local assets with get_raw_svg() helper
+
+// SCSS Variables for Consistent Layout
+$container-max-width: calc(1280 / 16 * 1rem); // 80rem - Main container width
+$content-max-width: calc(800 / 16 * 1rem);    // 50rem - Content area width
+$narrow-max-width: calc(600 / 16 * 1rem);     // 37.5rem - Narrow content width
+
+// SCSS Mixins for Consistent Containers
+@mixin container {
+    width: 100%;
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: 0 calc(16 / 16 * 1rem);
+}
+
+@mixin content-container {
+    width: 100%;
+    max-width: $content-max-width;
+    margin: 0 auto;
+}
+
+@mixin narrow-container {
+    width: 100%;
+    max-width: $narrow-max-width;
+    margin: 0 auto;
+}
+
+:root {
+    /* Atlanta's Furniture Taxi Brand Colors */
+    --primary: #EDB72A; /* Atlanta brand yellow */
+    --primaryLight: #F4C443; /* Lighter yellow from existing brand */
+    --secondary: #000000; /* Atlanta brand black */
+    --secondaryLight: #1a1a1a; /* Slightly lighter black */
+    --headerColor: #1a1a1a;
+    --bodyTextColor: #4e4b66;
+    --bodyTextColorWhite: #fafbfc;
+    --border: #e9ecef; /* Light gray border color */
+    /* 13px - 16px */
+    --topperFontSize: clamp(0.8125rem, 1.6vw, 1rem);
+    /* 31px - 49px */
+    --headerFontSize: clamp(1.9375rem, 3.9vw, 3.0625rem);
+    --bodyFontSize: 1rem;
+    /* 60px - 100px top and bottom */
+    --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
+    
+    /* Consistent Container Widths */
+    --containerWidth: #{$container-max-width};
+    --contentWidth: #{$content-max-width};
+    --narrowWidth: #{$narrow-max-width};
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+*, *:before, *:after {
+    /* prevents padding from affecting height and width */
+    box-sizing: border-box;
+}
+.cs-topper {
+    font-size: var(--topperFontSize);
+    line-height: 1.2em;
+    text-transform: uppercase;
+    text-align: inherit;
+    letter-spacing: .1em;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.cs-title {
+    font-size: var(--headerFontSize);
+    font-weight: 900;
+    line-height: 1.2em;
+    text-align: inherit;
+    max-width: 43.75rem;
+    margin: 0 0 1rem 0;
+    color: var(--headerColor);
+    position: relative;
+}
+
+.cs-text {
+    font-size: var(--bodyFontSize);
+    line-height: 1.5em;
+    text-align: inherit;
+    width: 100%;
+    max-width: 40.625rem;
+    margin: 0;
+    color: var(--bodyTextColor);
+}
+
+// Import all page components
+@import "../home/page.scss";
+
+// Import partial components that are not in home directory
+@import "../partials/why-choose-us.scss";
+// Note: Other partials like moving-process, services, awards are handled in their respective home/ folders
+                            

@@ -9,6 +9,7 @@ import pickupLocationData from './steps/pickup-location.json';
 import pickupChallengesData from './steps/pickup-challenges.json';
 import destinationLocationData from './steps/destination-location.json';
 import destinationChallengesData from './steps/destination-challenges.json';
+import routeDistanceData from './steps/route-distance.json';
 import additionalServicesData from './steps/additional-services.json';
 import movingSuppliesQuestionData from './steps/moving-supplies-question.json';
 
@@ -30,6 +31,7 @@ export const STEPS_DATA = {
   'pickup-challenges': pickupChallengesData,
   'destination-location': destinationLocationData,
   'destination-challenges': destinationChallengesData,
+  'route-distance': routeDistanceData,
   'additional-services': additionalServicesData,
   'moving-supplies-question': movingSuppliesQuestionData
 };
@@ -46,6 +48,7 @@ export const STEP_ORDER = [
   'pickup-challenges',
   'destination-location',
   'destination-challenges',
+  'route-distance',
   'additional-services',
   'moving-supplies-question',
   'moving-supplies-selection',

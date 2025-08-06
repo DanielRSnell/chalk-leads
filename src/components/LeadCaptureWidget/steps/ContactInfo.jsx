@@ -52,7 +52,7 @@ export function ContactInfo() {
               First Name
             </label>
             <div className="relative">
-              <User className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
+              <User className="input-icon" />
               <input
                 type="text"
                 value={contact.firstName}
@@ -78,7 +78,7 @@ export function ContactInfo() {
               Last Name
             </label>
             <div className="relative">
-              <User className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
+              <User className="input-icon" />
               <input
                 type="text"
                 value={contact.lastName}
@@ -105,7 +105,7 @@ export function ContactInfo() {
             Email
           </label>
           <div className="relative">
-            <Mail className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
+            <Mail className="input-icon" />
             <input
               type="email"
               value={contact.email}
@@ -131,7 +131,7 @@ export function ContactInfo() {
             Phone
           </label>
           <div className="relative">
-            <Phone className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
+            <Phone className="input-icon" />
             <input
               type="tel"
               value={contact.phone}

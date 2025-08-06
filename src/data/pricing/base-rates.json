@@ -68,5 +68,10 @@
       "multiplier": 1.15,
       "description": "Evening hours - 15% premium"
     }
+  },
+  "distance": {
+    "costPerMile": 4.00,
+    "minimumDistance": 0,
+    "description": "Mileage charge for travel between pickup and destination"
   }
 }

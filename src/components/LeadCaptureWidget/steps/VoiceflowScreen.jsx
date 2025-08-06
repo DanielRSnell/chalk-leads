@@ -21,7 +21,7 @@ export function VoiceflowScreen() {
         const leadData = window.leadData;
 
         // Store leadData to moovinleads_review in localStorage
-        localStorage.setItem('moovinleads_review', JSON.stringify(leadData));
+        localStorage.setItem('moovinleads_review', JSON.stringify(window.leadData));
 
         window.voiceflow.chat.load({
           verify: { projectID: '68810d435cc97ae487533abe' },
@@ -43,7 +43,7 @@ export function VoiceflowScreen() {
             target: voiceflowRef.current,
           },
           assistant: {
-            stylesheet: "/wp-content/uploads/moover/chat.css"
+            stylesheet: "/wp-content/uploads/2025/07/style.css"
           },
           autostart: true,
         });

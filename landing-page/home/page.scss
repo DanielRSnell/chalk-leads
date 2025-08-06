@@ -1,0 +1,90 @@
+/*-- -------------------------- -->
+<---         Page Styles       -->
+<--- -------------------------- -*/
+
+// Import all landing page components
+@import "navigation/index.scss";
+@import "hero/index.scss";
+@import "services/index.scss";
+@import "awards/index.scss";
+@import "steps/index.scss";
+@import "testimonials/index.scss";
+@import "call-to-action/index.scss";
+@import "faq/index.scss";
+@import "footer/index.scss";
+
+// Page-specific styles
+.landing-page {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.landing-main {
+    min-height: 100vh;
+}
+
+// Contact section styles
+[data-component="contact"] {
+    padding: var(--sectionPadding);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+
+    .cs-container {
+        @include container;
+        text-align: center;
+    }
+
+    .contact-content {
+        @include content-container;
+    }
+
+    .widget-container {
+        margin-top: calc(40 / 16 * 1rem);
+        padding: calc(30 / 16 * 1rem);
+        background: #fff;
+        border-radius: calc(12 / 16 * 1rem);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+}
+
+// Contact info section styles
+[data-component="contact-info"] {
+    padding: calc(60 / 16 * 1rem) calc(16 / 16 * 1rem);
+    background: var(--secondary);
+    color: #fff;
+
+    .cs-container {
+        @include container;
+    }
+
+    .contact-info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: calc(30 / 16 * 1rem);
+        text-align: center;
+    }
+
+    .contact-item {
+        h3 {
+            font-size: calc(20 / 16 * 1rem);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: calc(8 / 16 * 1rem);
+        }
+
+        p {
+            font-size: calc(16 / 16 * 1rem);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            transition: opacity 0.3s;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+}

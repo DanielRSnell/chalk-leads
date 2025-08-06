@@ -10,7 +10,8 @@ import { ServiceOption } from './ui/ServiceOption';
 import { AvatarPrompt } from './ui/AvatarPrompt';
 import { MapboxPreview } from './ui/MapboxPreview';
 import { CalendarControl } from './ui/CalendarControl';
-import { GooglePlacesAutocomplete } from './ui/GooglePlacesAutocomplete';
+import { MapboxAutofill } from './ui/MapboxAutofill';
+import { RouteCalculation } from './ui/RouteCalculation';
 import { WelcomeBack } from './steps/WelcomeBack';
 
 // Icon mapping
@@ -297,9 +298,7 @@ export function StepRenderer({ stepData }) {
     const fieldPath = field.validation?.field || '';
     const currentValue = fieldPath.split('.').reduce((obj, key) => obj?.[key], formData) || '';
     
-    const handleAddressChange = (e) => {
-      const value = e.target.value;
-      
+    const handleAddressChange = (value) => {
       // Handle nested address fields specially
       if (fieldPath === 'addresses.pickup.address') {
         updateFormData('addresses', {
@@ -329,29 +328,13 @@ export function StepRenderer({ stepData }) {
 
     return (
       <div key={field.id} className="space-y-6">
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-foreground">
-            {field.label}
-          </label>
-          <div className="relative group mt-3">
-            {IconComponent && (
-              <IconComponent className="input-icon group-focus-within:text-primary" />
-            )}
-            <input
-              type="text"
-              value={currentValue}
-              onChange={handleAddressChange}
-              placeholder={field.placeholder}
-              className="
-                w-full pl-12 pr-4 py-3 border rounded-xl text-sm
-                transition-all duration-200 placeholder:text-muted-foreground/60
-                border-border hover:border-border/80 focus:border-primary 
-                focus:ring-4 focus:ring-primary/10 focus:outline-none 
-                bg-background/50 hover:bg-background
-              "
-            />
-          </div>
-        </div>
+        <MapboxAutofill
+          value={currentValue}
+          onChange={handleAddressChange}
+          placeholder={field.placeholder}
+          label={field.label}
+          icon={IconComponent}
+        />
         
         {/* Mapbox Preview */}
         {currentValue && field.features?.googleMapsPreview && (
@@ -621,6 +604,31 @@ export function StepRenderer({ stepData }) {
     );
   };
 
+  const renderRouteCalculation = () => {
+    const pickupAddress = formData.addresses?.pickup?.address;
+    const destinationAddress = formData.addresses?.destination?.address;
+    
+    const handleRouteComplete = (routeInfo) => {
+      console.log('🗺️ Route calculation complete:', routeInfo);
+      
+      // Store route data in form
+      updateFormData('routeDistance', routeInfo.routeDistance);
+      updateFormData('routeDuration', routeInfo.routeDuration);
+      updateFormData('routeData', routeInfo.routeData);
+      
+      // Automatically proceed to next step
+      nextStep();
+    };
+    
+    return (
+      <RouteCalculation
+        pickupAddress={pickupAddress}
+        destinationAddress={destinationAddress}
+        onComplete={handleRouteComplete}
+      />
+    );
+  };
+
   const renderContent = () => {
     const { type = 'grid' } = stepData.layout || {};
     
@@ -631,6 +639,8 @@ export function StepRenderer({ stepData }) {
         return renderChallenges();
       case 'form':
         return renderForm();
+      case 'route-calculation':
+        return renderRouteCalculation();
       case 'list':
         return renderServiceOptions(); // Handle list layout with service options
       case 'grid':

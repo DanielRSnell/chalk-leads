@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mapbox SearchBox Test</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            max-width: 600px; 
+            margin: 0 auto; 
+        }
+        .widget-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mapbox SearchBox Test</h1>
+    <div class="widget-container">
+        <plugin-boilerplate 
+            user-role="administrator"
+            site-url="http://localhost"
+            settings='{"debug": true}'
+            tailwind-css=""
+        ></plugin-boilerplate>
+    </div>
+    
+    <div id="console-output">
+        <h3>Console Output:</h3>
+        <div id="logs" style="background: #f0f0f0; padding: 10px; border-radius: 4px; font-family: monospace; white-space: pre-wrap; max-height: 400px; overflow-y: auto;"></div>
+    </div>
+
+    <script src="dist/js/shadow-plugin.js"></script>
+    
+    <script>
+        // Capture console logs
+        const logsDiv = document.getElementById('logs');
+        const originalLog = console.log;
+        const originalError = console.error;
+        
+        function addToOutput(type, ...args) {
+            const timestamp = new Date().toLocaleTimeString();
+            const message = args.map(arg => 
+                typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
+            ).join(' ');
+            logsDiv.textContent += `[${timestamp}] ${type.toUpperCase()}: ${message}\n`;
+            logsDiv.scrollTop = logsDiv.scrollHeight;
+        }
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addToOutput('log', ...args);
+        };
+        
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addToOutput('error', ...args);
+        };
+        
+        // Test the widget after a short delay
+        setTimeout(() => {
+            console.log('🧪 Starting Mapbox SearchBox test...');
+            
+            // Try to open the widget
+            const widget = document.querySelector('plugin-boilerplate');
+            if (widget && widget.shadowRoot) {
+                const fab = widget.shadowRoot.querySelector('button');
+                if (fab) {
+                    console.log('🖱️ Clicking FAB to open widget...');
+                    fab.click();
+                }
+            }
+        }, 2000);
+    </script>
+</body>
+</html>

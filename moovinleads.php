@@ -64,6 +64,9 @@ class MoovinLeads {
         // Admin hooks
         add_action('admin_menu', [$this, 'addAdminMenu']);
         
+        // Landing page hooks
+        add_action('template_redirect', [$this, 'handleLandingPage']);
+        
         // Plugin lifecycle hooks
         register_activation_hook(__FILE__, [$this, 'onActivation']);
         register_deactivation_hook(__FILE__, [$this, 'onDeactivation']);
@@ -324,9 +327,41 @@ class MoovinLeads {
         // Get Tailwind CSS for admin page
         $tailwind_css = $this->getTailwindCSS();
         
+        // Handle form submission
+        if (isset($_POST['submit_landing_settings'])) {
+            check_admin_referer('moovinleads_landing_settings');
+            update_option('moovinleads_enable_landing_page', isset($_POST['enable_landing_page']));
+            echo '<div class="notice notice-success"><p>Settings saved!</p></div>';
+        }
+        
+        $enable_landing = get_option('moovinleads_enable_landing_page', true);
         ?>
         <div class="wrap">
             <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
+            
+            <!-- Landing Page Settings -->
+            <div class="postbox" style="margin-top: 20px;">
+                <h2 class="hndle" style="padding: 10px 15px;">Landing Page Settings</h2>
+                <div class="inside">
+                    <form method="post" action="">
+                        <?php wp_nonce_field('moovinleads_landing_settings'); ?>
+                        <table class="form-table">
+                            <tr>
+                                <th scope="row">Enable Landing Page on Home</th>
+                                <td>
+                                    <label>
+                                        <input type="checkbox" name="enable_landing_page" value="1" <?php checked($enable_landing); ?> />
+                                        Replace home page with Atlanta's Furniture Taxi landing page
+                                    </label>
+                                    <p class="description">When enabled, the home page will show the custom landing page instead of the theme's front-page template.</p>
+                                </td>
+                            </tr>
+                        </table>
+                        <?php submit_button('Save Landing Page Settings', 'primary', 'submit_landing_settings'); ?>
+                    </form>
+                </div>
+            </div>
+            
             <div id="moovinleads-admin-root">
                 <!-- Example of passing server data to React component via attributes -->
                 <moovinleads-widget 
@@ -386,6 +421,37 @@ class MoovinLeads {
         $css = trim($css);
         
         return $css;
+    }
+
+    /**
+     * Handle landing page rendering on home page
+     */
+    public function handleLandingPage() {
+        // Check if we're on the front page/home page
+        if (is_front_page() || is_home()) {
+            // Get option to enable/disable landing page
+            $enable_landing = get_option('moovinleads_enable_landing_page', true);
+            
+            if ($enable_landing) {
+                // Load and display the landing page
+                $this->renderLandingPage();
+                exit; // Stop WordPress from loading the normal theme
+            }
+        }
+    }
+    
+    /**
+     * Render the landing page template
+     */
+    private function renderLandingPage() {
+        $landing_page_file = MOOVINLEADS_DIR . 'landing-page/index.php';
+        
+        if (file_exists($landing_page_file)) {
+            include $landing_page_file;
+        } else {
+            // Fallback if landing page file doesn't exist
+            wp_die('Landing page template not found.', 'MoovinLeads Error', ['response' => 404]);
+        }
     }
 
     /**
@@ -552,6 +618,7 @@ class MoovinLeads {
     private function loadDependencies() {
         // Load additional PHP classes here
         require_once MOOVINLEADS_DIR . 'includes/api/class-tailwind-controller.php';
+        require_once MOOVINLEADS_DIR . 'includes/api/class-mapbox-controller.php';
         // require_once MOOVINLEADS_DIR . 'includes/class-admin.php';
     }
 }

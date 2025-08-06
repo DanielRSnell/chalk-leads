@@ -1,0 +1,309 @@
+/*-- -------------------------- -->
+<---          Footer           -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    [data-component="footer"] {
+        padding: var(--sectionPadding);
+        background-color: #1a1a1a;
+        color: #fff;
+        position: relative;
+
+        .cs-container {
+            @include container;
+        }
+
+        // Top Section - Contact Info Grid
+        .cs-top-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: calc(40 / 16 * 1rem);
+            margin-bottom: calc(48 / 16 * 1rem);
+            padding-bottom: calc(48 / 16 * 1rem);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        // Company Information
+        .cs-company-info {
+            .cs-logo-img {
+                width: calc(160 / 16 * 1rem);
+                height: auto;
+                margin-bottom: calc(16 / 16 * 1rem);
+            }
+
+            .cs-description {
+                font-size: calc(16 / 16 * 1rem);
+                line-height: 1.6;
+                color: rgba(255, 255, 255, 0.8);
+                margin: 0;
+            }
+        }
+
+        // Section Titles
+        .cs-section-title {
+            font-size: calc(18 / 16 * 1rem);
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 calc(16 / 16 * 1rem) 0;
+            line-height: 1.2;
+        }
+
+        // Contact Information
+        .cs-contact-info {
+            .cs-contact-item {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: calc(12 / 16 * 1rem);
+                gap: calc(4 / 16 * 1rem);
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            .cs-contact-label {
+                font-size: calc(14 / 16 * 1rem);
+                font-weight: 600;
+                color: rgba(255, 255, 255, 0.7);
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+
+            .cs-contact-link {
+                font-size: calc(16 / 16 * 1rem);
+                color: #fff;
+                text-decoration: none;
+                transition: color 0.3s ease;
+
+                &:hover {
+                    color: var(--primary);
+                }
+            }
+        }
+
+        // Service Areas
+        .cs-service-areas {
+            .cs-area-text {
+                font-size: calc(16 / 16 * 1rem);
+                line-height: 1.5;
+                color: rgba(255, 255, 255, 0.8);
+                margin: 0;
+            }
+        }
+
+        // Credentials
+        .cs-credentials {
+            .cs-credentials-text {
+                font-size: calc(16 / 16 * 1rem);
+                line-height: 1.5;
+                color: rgba(255, 255, 255, 0.8);
+                margin: 0;
+            }
+        }
+
+        // Bottom Section
+        .cs-bottom-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: calc(40 / 16 * 1rem);
+            margin-bottom: calc(40 / 16 * 1rem);
+        }
+
+        // Quick Links
+        .cs-links-group {
+            .cs-links-title {
+                font-size: calc(18 / 16 * 1rem);
+                font-weight: 700;
+                color: var(--primary);
+                margin: 0 0 calc(20 / 16 * 1rem) 0;
+            }
+
+            .cs-links-columns {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: calc(8 / 16 * 1rem) calc(24 / 16 * 1rem);
+            }
+
+            .cs-footer-link {
+                font-size: calc(15 / 16 * 1rem);
+                color: rgba(255, 255, 255, 0.8);
+                text-decoration: none;
+                line-height: 1.4;
+                transition: color 0.3s ease;
+                display: block;
+                margin-bottom: calc(8 / 16 * 1rem);
+
+                &:hover {
+                    color: var(--primary);
+                }
+            }
+        }
+
+        // Newsletter
+        .cs-newsletter {
+            .cs-newsletter-title {
+                font-size: calc(18 / 16 * 1rem);
+                font-weight: 700;
+                color: var(--primary);
+                margin: 0 0 calc(12 / 16 * 1rem) 0;
+            }
+
+            .cs-newsletter-text {
+                font-size: calc(15 / 16 * 1rem);
+                line-height: 1.5;
+                color: rgba(255, 255, 255, 0.8);
+                margin: 0 0 calc(20 / 16 * 1rem) 0;
+            }
+
+            .cs-form-group {
+                display: flex;
+                flex-direction: column;
+                gap: calc(12 / 16 * 1rem);
+            }
+
+            .cs-newsletter-input {
+                padding: calc(14 / 16 * 1rem) calc(16 / 16 * 1rem);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: calc(6 / 16 * 1rem);
+                background-color: rgba(255, 255, 255, 0.05);
+                color: #fff;
+                font-size: calc(15 / 16 * 1rem);
+                transition: border-color 0.3s ease;
+
+                &::placeholder {
+                    color: rgba(255, 255, 255, 0.5);
+                }
+
+                &:focus {
+                    outline: none;
+                    border-color: var(--primary);
+                }
+            }
+
+            .cs-newsletter-button {
+                padding: calc(14 / 16 * 1rem) calc(24 / 16 * 1rem);
+                background-color: var(--primary);
+                color: #000;
+                border: none;
+                border-radius: calc(6 / 16 * 1rem);
+                font-size: calc(15 / 16 * 1rem);
+                font-weight: 600;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+
+                &:hover {
+                    background-color: var(--primaryLight);
+                }
+            }
+        }
+
+        // Copyright Section
+        .cs-copyright-section {
+            padding-top: calc(24 / 16 * 1rem);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+            .cs-copyright-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: calc(16 / 16 * 1rem);
+                text-align: center;
+            }
+
+            .cs-copyright-text {
+                font-size: calc(14 / 16 * 1rem);
+                color: rgba(255, 255, 255, 0.6);
+            }
+
+            .cs-legal-links {
+                display: flex;
+                align-items: center;
+                gap: calc(12 / 16 * 1rem);
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .cs-legal-link {
+                font-size: calc(14 / 16 * 1rem);
+                color: rgba(255, 255, 255, 0.7);
+                text-decoration: none;
+                transition: color 0.3s ease;
+
+                &:hover {
+                    color: var(--primary);
+                }
+            }
+
+            .cs-divider {
+                color: rgba(255, 255, 255, 0.3);
+                font-size: calc(14 / 16 * 1rem);
+            }
+        }
+    }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    [data-component="footer"] {
+        .cs-top-section {
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: calc(48 / 16 * 1rem);
+            align-items: start;
+        }
+
+        .cs-bottom-section {
+            grid-template-columns: 1fr 1fr;
+            gap: calc(60 / 16 * 1rem);
+        }
+
+        .cs-newsletter {
+            .cs-form-group {
+                flex-direction: row;
+                align-items: stretch;
+            }
+
+            .cs-newsletter-input {
+                flex: 1;
+                border-radius: calc(6 / 16 * 1rem) 0 0 calc(6 / 16 * 1rem);
+            }
+
+            .cs-newsletter-button {
+                border-radius: 0 calc(6 / 16 * 1rem) calc(6 / 16 * 1rem) 0;
+                min-width: calc(120 / 16 * 1rem);
+            }
+        }
+
+        .cs-copyright-content {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+}
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    [data-component="footer"] {
+        .cs-top-section {
+            gap: calc(60 / 16 * 1rem);
+        }
+
+        .cs-bottom-section {
+            gap: calc(80 / 16 * 1rem);
+        }
+
+        .cs-links-columns {
+            grid-template-columns: 1fr;
+            gap: calc(8 / 16 * 1rem);
+        }
+    }
+}
+
+/* Dark Mode Compatibility */
+@media only screen and (min-width: 0rem) {
+    body.dark-mode {
+        [data-component="footer"] {
+            background-color: #0a0a0a;
+        }
+    }
+}

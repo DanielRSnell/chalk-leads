@@ -78,7 +78,7 @@ const useLeadStore = create(
         let nextStep = Math.min(state.currentStep + 1, state.totalSteps - 1);
         
         // Skip moving supplies selection if user doesn't need supplies
-        if (state.currentStep === 11 && state.formData.needsSupplies === 'no') { // moving-supplies-question step
+        if (state.currentStep === 12 && state.formData.needsSupplies === 'no') { // moving-supplies-question step (index 12)
           nextStep = Math.min(nextStep + 1, state.totalSteps - 1); // Skip to contact step
         }
         

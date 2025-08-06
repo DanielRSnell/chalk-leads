@@ -23,12 +23,12 @@
     {
       "testName": "JavaScript bundle has minimum size",
       "passed": true,
-      "details": "1175KB"
+      "details": "1200KB"
     },
     {
       "testName": "CSS bundle has minimum size",
       "passed": true,
-      "details": "40KB"
+      "details": "41KB"
     },
     {
       "testName": "JavaScript contains React",
@@ -166,12 +166,12 @@
     {
       "testName": "JavaScript heap usage reasonable",
       "passed": true,
-      "details": "8MB"
+      "details": "6MB"
     },
     {
       "testName": "DOM nodes count reasonable",
-      "passed": true,
-      "details": "622 nodes"
+      "passed": false,
+      "details": "1558 nodes"
     },
     {
       "testName": "Widget opens quickly",
@@ -181,12 +181,12 @@
     {
       "testName": "CSS bundle loaded correctly",
       "passed": true,
-      "details": "40KB"
+      "details": "41KB"
     }
   ],
   "overall": {
-    "passed": 27,
-    "failed": 10,
+    "passed": 26,
+    "failed": 11,
     "total": 37
   }
 }

@@ -29,7 +29,7 @@ export function StepNavigation() {
   const isLegacyComponent = LEGACY_COMPONENTS.includes(currentStepId);
   
   // Show navigation for data-driven steps or special hybrid components that use fixed footer
-  const hybridComponents = ['moving-supplies-selection', 'review-details', 'contact'];
+  const hybridComponents = ['moving-supplies-selection', 'review-details', 'contact', 'route-distance'];
   if (!isDataDriven && !hybridComponents.includes(currentStepId)) {
     return null;
   }
@@ -59,6 +59,11 @@ export function StepNavigation() {
     
     if (currentStepId === 'contact' && window.contactInfoNavigation) {
       window.contactInfoNavigation.handleContinue();
+      return;
+    }
+    
+    if (currentStepId === 'route-distance' && window.routeCalculationNavigation) {
+      window.routeCalculationNavigation.handleContinue();
       return;
     }
     
@@ -92,6 +97,9 @@ export function StepNavigation() {
   } else if (currentStepId === 'contact' && window.contactInfoNavigation) {
     canSkip = window.contactInfoNavigation.canSkip;
     buttonText = window.contactInfoNavigation.buttonText;
+  } else if (currentStepId === 'route-distance' && window.routeCalculationNavigation) {
+    canSkip = window.routeCalculationNavigation.canSkip;
+    buttonText = window.routeCalculationNavigation.buttonText;
   }
   
   return (

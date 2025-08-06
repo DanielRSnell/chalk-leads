@@ -1,0 +1,146 @@
+/* Awards Section Styles */
+
+[data-component="awards"] {
+    /* Remove the default padding to match other sections */
+    padding: var(--sectionPadding);
+
+    .cs-container {
+        @include container;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cs-content {
+        width: 100%;
+        max-width: 40.625rem;
+        margin: 0 auto calc(60 / 16 * 1rem);
+        text-align: center;
+    }
+
+    .cs-topper {
+        color: var(--primary);
+        font-size: var(--topperFontSize);
+        font-weight: 700;
+        line-height: 1.2em;
+        text-transform: uppercase;
+        text-align: center;
+        letter-spacing: .1em;
+        margin: 0 0 calc(4 / 16 * 1rem) 0;
+        display: block;
+    }
+
+    .cs-title {
+        font-size: var(--headerFontSize);
+        font-weight: 900;
+        line-height: 1.2em;
+        text-align: center;
+        color: var(--headerColor);
+        margin: 0 0 calc(16 / 16 * 1rem) 0;
+        max-width: calc(700 / 16 * 1rem);
+    }
+
+    .cs-text {
+        font-size: var(--bodyFontSize);
+        line-height: 1.5em;
+        text-align: center;
+        width: 100%;
+        max-width: 40.625rem;
+        color: var(--bodyTextColor);
+        margin: 0;
+    }
+
+    .cs-card-group {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        flex-wrap: wrap;
+        gap: calc(20 / 16 * 1rem);
+    }
+
+    .cs-item {
+        list-style: none;
+        width: calc(180 / 16 * 1rem);
+        margin: 0;
+        padding: calc(24 / 16 * 1rem);
+        background-color: #f8f9fa;
+        border: 1px solid var(--border, #e9ecef);
+        border-radius: calc(12 / 16 * 1rem);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+            transform: translateY(calc(-4 / 16 * 1rem));
+            box-shadow: 0 calc(8 / 16 * 1rem) calc(24 / 16 * 1rem) rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .cs-picture {
+        width: calc(120 / 16 * 1rem);
+        height: calc(120 / 16 * 1rem);
+        margin: 0 0 calc(16 / 16 * 1rem) 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        border-radius: calc(8 / 16 * 1rem);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+    }
+
+    .cs-award-title {
+        font-size: calc(18 / 16 * 1rem);
+        font-weight: 700;
+        line-height: 1.2em;
+        color: var(--headerColor);
+        margin: 0 0 calc(8 / 16 * 1rem) 0;
+    }
+
+    .cs-award-year {
+        font-size: calc(14 / 16 * 1rem);
+        line-height: 1.5em;
+        color: var(--bodyTextColor);
+        margin: 0;
+        font-weight: 600;
+    }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    [data-component="awards"] {
+        .cs-card-group {
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: calc(24 / 16 * 1rem);
+        }
+
+        .cs-item {
+            width: calc(180 / 16 * 1rem);
+        }
+    }
+}
+
+/* Small Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    [data-component="awards"] {
+        .cs-card-group {
+            flex-wrap: nowrap;
+            gap: calc(20 / 16 * 1rem);
+        }
+
+        .cs-item {
+            width: calc(160 / 16 * 1rem);
+        }
+    }
+}

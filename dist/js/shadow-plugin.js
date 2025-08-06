@@ -24647,11 +24647,16 @@
       description: "Evening hours - 15% premium"
     }
   };
+  const distance = {
+    costPerMile: 4,
+    minimumDistance: 0
+  };
   const baseRates = {
     moveSize,
     serviceType,
     laborType,
-    timeWindow
+    timeWindow,
+    distance
   };
   const challenges = {
     stairs: {
@@ -24735,6 +24740,8 @@
       basePrice: 0,
       serviceType: "",
       timeWindow: "",
+      distance: 0,
+      distanceCost: 0,
       challenges: [],
       additionalServices: [],
       movingSupplies: [],
@@ -24789,6 +24796,13 @@
           description: baseRates.timeWindow[timeWindow2].description
         });
       }
+    }
+    const distance2 = formData.routeDistance || 0;
+    if (distance2 > baseRates.distance.minimumDistance) {
+      const distanceCost = distance2 * baseRates.distance.costPerMile;
+      breakdown.distance = distance2;
+      breakdown.distanceCost = distanceCost;
+      basePrice += distanceCost;
     }
     let runningTotal = basePrice;
     const pickupChallenges = ((_b = (_a = formData.addresses) == null ? void 0 : _a.pickup) == null ? void 0 : _b.challenges) || [];
@@ -24965,7 +24979,7 @@
         // Navigation actions
         nextStep: () => set((state) => {
           let nextStep = Math.min(state.currentStep + 1, state.totalSteps - 1);
-          if (state.currentStep === 11 && state.formData.needsSupplies === "no") {
+          if (state.currentStep === 12 && state.formData.needsSupplies === "no") {
             nextStep = Math.min(nextStep + 1, state.totalSteps - 1);
           }
           return {
@@ -25310,12 +25324,23 @@
    * This source code is licensed under the ISC license.
    * See the LICENSE file in the root directory of this source tree.
    */
-  const __iconNode$w = [
+  const __iconNode$x = [
     ["rect", { width: "20", height: "5", x: "2", y: "3", rx: "1", key: "1wp1u1" }],
     ["path", { d: "M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8", key: "1s80jp" }],
     ["path", { d: "M10 12h4", key: "a56b0p" }]
   ];
-  const Archive = createLucideIcon("archive", __iconNode$w);
+  const Archive = createLucideIcon("archive", __iconNode$x);
+  /**
+   * @license lucide-react v0.525.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   */
+  const __iconNode$w = [
+    ["path", { d: "M12 5v14", key: "s699le" }],
+    ["path", { d: "m19 12-7 7-7-7", key: "1idqje" }]
+  ];
+  const ArrowDown = createLucideIcon("arrow-down", __iconNode$w);
   /**
    * @license lucide-react v0.525.0 - ISC
    *
@@ -25323,10 +25348,10 @@
    * See the LICENSE file in the root directory of this source tree.
    */
   const __iconNode$v = [
-    ["path", { d: "M12 5v14", key: "s699le" }],
-    ["path", { d: "m19 12-7 7-7-7", key: "1idqje" }]
+    ["path", { d: "M5 12h14", key: "1ays0h" }],
+    ["path", { d: "m12 5 7 7-7 7", key: "xquz4c" }]
   ];
-  const ArrowDown = createLucideIcon("arrow-down", __iconNode$v);
+  const ArrowRight = createLucideIcon("arrow-right", __iconNode$v);
   /**
    * @license lucide-react v0.525.0 - ISC
    *
@@ -25334,10 +25359,12 @@
    * See the LICENSE file in the root directory of this source tree.
    */
   const __iconNode$u = [
-    ["path", { d: "M5 12h14", key: "1ays0h" }],
-    ["path", { d: "m12 5 7 7-7 7", key: "xquz4c" }]
+    ["path", { d: "m21 16-4 4-4-4", key: "f6ql7i" }],
+    ["path", { d: "M17 20V4", key: "1ejh1v" }],
+    ["path", { d: "m3 8 4-4 4 4", key: "11wl7u" }],
+    ["path", { d: "M7 4v16", key: "1glfcx" }]
   ];
-  const ArrowRight = createLucideIcon("arrow-right", __iconNode$u);
+  const ArrowUpDown = createLucideIcon("arrow-up-down", __iconNode$u);
   /**
    * @license lucide-react v0.525.0 - ISC
    *
@@ -25345,12 +25372,10 @@
    * See the LICENSE file in the root directory of this source tree.
    */
   const __iconNode$t = [
-    ["path", { d: "m21 16-4 4-4-4", key: "f6ql7i" }],
-    ["path", { d: "M17 20V4", key: "1ejh1v" }],
-    ["path", { d: "m3 8 4-4 4 4", key: "11wl7u" }],
-    ["path", { d: "M7 4v16", key: "1glfcx" }]
+    ["path", { d: "m5 12 7-7 7 7", key: "hav0vg" }],
+    ["path", { d: "M12 19V5", key: "x0mq9r" }]
   ];
-  const ArrowUpDown = createLucideIcon("arrow-up-down", __iconNode$t);
+  const ArrowUp = createLucideIcon("arrow-up", __iconNode$t);
   /**
    * @license lucide-react v0.525.0 - ISC
    *
@@ -25358,17 +25383,6 @@
    * See the LICENSE file in the root directory of this source tree.
    */
   const __iconNode$s = [
-    ["path", { d: "m5 12 7-7 7 7", key: "hav0vg" }],
-    ["path", { d: "M12 19V5", key: "x0mq9r" }]
-  ];
-  const ArrowUp = createLucideIcon("arrow-up", __iconNode$s);
-  /**
-   * @license lucide-react v0.525.0 - ISC
-   *
-   * This source code is licensed under the ISC license.
-   * See the LICENSE file in the root directory of this source tree.
-   */
-  const __iconNode$r = [
     ["rect", { width: "16", height: "20", x: "4", y: "2", rx: "2", ry: "2", key: "76otgf" }],
     ["path", { d: "M9 22v-4h6v4", key: "r93iot" }],
     ["path", { d: "M8 6h.01", key: "1dz90k" }],
@@ -25381,60 +25395,71 @@
     ["path", { d: "M8 10h.01", key: "19clt8" }],
     ["path", { d: "M8 14h.01", key: "6423bh" }]
   ];
-  const Building = createLucideIcon("building", __iconNode$r);
+  const Building = createLucideIcon("building", __iconNode$s);
   /**
    * @license lucide-react v0.525.0 - ISC
    *
    * This source code is licensed under the ISC license.
    * See the LICENSE file in the root directory of this source tree.
    */
-  const __iconNode$q = [
+  const __iconNode$r = [
     ["path", { d: "M8 2v4", key: "1cmpym" }],
     ["path", { d: "M16 2v4", key: "4m81vk" }],
     ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
     ["path", { d: "M3 10h18", key: "8toen8" }]
   ];
-  const Calendar = createLucideIcon("calendar", __iconNode$q);
+  const Calendar = createLucideIcon("calendar", __iconNode$r);
   /**
    * @license lucide-react v0.525.0 - ISC
    *
    * This source code is licensed under the ISC license.
    * See the LICENSE file in the root directory of this source tree.
    */
-  const __iconNode$p = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
-  const Check = createLucideIcon("check", __iconNode$p);
+  const __iconNode$q = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
+  const Check = createLucideIcon("check", __iconNode$q);
   /**
    * @license lucide-react v0.525.0 - ISC
    *
    * This source code is licensed under the ISC license.
    * See the LICENSE file in the root directory of this source tree.
    */
-  const __iconNode$o = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
-  const ChevronDown = createLucideIcon("chevron-down", __iconNode$o);
+  const __iconNode$p = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
+  const ChevronDown = createLucideIcon("chevron-down", __iconNode$p);
   /**
    * @license lucide-react v0.525.0 - ISC
    *
    * This source code is licensed under the ISC license.
    * See the LICENSE file in the root directory of this source tree.
    */
-  const __iconNode$n = [["path", { d: "m15 18-6-6 6-6", key: "1wnfg3" }]];
-  const ChevronLeft = createLucideIcon("chevron-left", __iconNode$n);
+  const __iconNode$o = [["path", { d: "m15 18-6-6 6-6", key: "1wnfg3" }]];
+  const ChevronLeft = createLucideIcon("chevron-left", __iconNode$o);
   /**
    * @license lucide-react v0.525.0 - ISC
    *
    * This source code is licensed under the ISC license.
    * See the LICENSE file in the root directory of this source tree.
    */
-  const __iconNode$m = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
-  const ChevronRight = createLucideIcon("chevron-right", __iconNode$m);
+  const __iconNode$n = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
+  const ChevronRight = createLucideIcon("chevron-right", __iconNode$n);
   /**
    * @license lucide-react v0.525.0 - ISC
    *
    * This source code is licensed under the ISC license.
    * See the LICENSE file in the root directory of this source tree.
    */
-  const __iconNode$l = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
-  const ChevronUp = createLucideIcon("chevron-up", __iconNode$l);
+  const __iconNode$m = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
+  const ChevronUp = createLucideIcon("chevron-up", __iconNode$m);
+  /**
+   * @license lucide-react v0.525.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   */
+  const __iconNode$l = [
+    ["path", { d: "M12 6v6l4 2", key: "mmk7yg" }],
+    ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }]
+  ];
+  const Clock = createLucideIcon("clock", __iconNode$l);
   /**
    * @license lucide-react v0.525.0 - ISC
    *
@@ -25442,10 +25467,10 @@
    * See the LICENSE file in the root directory of this source tree.
    */
   const __iconNode$k = [
-    ["path", { d: "M12 6v6l4 2", key: "mmk7yg" }],
-    ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }]
+    ["line", { x1: "12", x2: "12", y1: "2", y2: "22", key: "7eqyqh" }],
+    ["path", { d: "M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6", key: "1b0p4s" }]
   ];
-  const Clock = createLucideIcon("clock", __iconNode$k);
+  const DollarSign = createLucideIcon("dollar-sign", __iconNode$k);
   /**
    * @license lucide-react v0.525.0 - ISC
    *
@@ -25453,17 +25478,6 @@
    * See the LICENSE file in the root directory of this source tree.
    */
   const __iconNode$j = [
-    ["line", { x1: "12", x2: "12", y1: "2", y2: "22", key: "7eqyqh" }],
-    ["path", { d: "M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6", key: "1b0p4s" }]
-  ];
-  const DollarSign = createLucideIcon("dollar-sign", __iconNode$j);
-  /**
-   * @license lucide-react v0.525.0 - ISC
-   *
-   * This source code is licensed under the ISC license.
-   * See the LICENSE file in the root directory of this source tree.
-   */
-  const __iconNode$i = [
     ["path", { d: "M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8", key: "5wwlr5" }],
     [
       "path",
@@ -25473,7 +25487,15 @@
       }
     ]
   ];
-  const House = createLucideIcon("house", __iconNode$i);
+  const House = createLucideIcon("house", __iconNode$j);
+  /**
+   * @license lucide-react v0.525.0 - ISC
+   *
+   * This source code is licensed under the ISC license.
+   * See the LICENSE file in the root directory of this source tree.
+   */
+  const __iconNode$i = [["path", { d: "M21 12a9 9 0 1 1-6.219-8.56", key: "13zald" }]];
+  const LoaderCircle = createLucideIcon("loader-circle", __iconNode$i);
   /**
    * @license lucide-react v0.525.0 - ISC
    *
@@ -25840,9 +25862,9 @@
       }
     );
   }
-  const id$b = "welcome";
-  const title$b = "How can we help?";
-  const subtitle$b = null;
+  const id$c = "welcome";
+  const title$c = "How can we help?";
+  const subtitle$c = null;
   const prompt = {
     message: "How can we help you today?",
     type: "avatar"
@@ -25865,7 +25887,7 @@
       type: "service"
     }
   ];
-  const buttons$b = {
+  const buttons$c = {
     primary: {
       text: "Continue",
       action: "auto"
@@ -25875,7 +25897,7 @@
       action: "existing_booking"
     }
   };
-  const layout$b = {
+  const layout$c = {
     type: "grid",
     columns: 1,
     centered: true
@@ -25885,18 +25907,18 @@
     field: "serviceType"
   };
   const welcomeData = {
-    id: id$b,
-    title: title$b,
-    subtitle: subtitle$b,
+    id: id$c,
+    title: title$c,
+    subtitle: subtitle$c,
     prompt,
     options: options$6,
-    buttons: buttons$b,
-    layout: layout$b,
+    buttons: buttons$c,
+    layout: layout$c,
     validation: validation$9
   };
-  const id$a = "labor-type";
-  const title$a = "What do you need help with?";
-  const subtitle$a = "Select the type of labor assistance you need";
+  const id$b = "labor-type";
+  const title$b = "What do you need help with?";
+  const subtitle$b = "Select the type of labor assistance you need";
   const conditional = {
     field: "serviceType",
     value: "labor-only",
@@ -25928,13 +25950,13 @@
       type: "service"
     }
   ];
-  const buttons$a = {
+  const buttons$b = {
     primary: {
       text: "Continue",
       action: "auto"
     }
   };
-  const layout$a = {
+  const layout$b = {
     type: "grid",
     columns: 1,
     centered: false
@@ -25944,18 +25966,18 @@
     field: "laborType"
   };
   const laborTypeData = {
-    id: id$a,
-    title: title$a,
-    subtitle: subtitle$a,
+    id: id$b,
+    title: title$b,
+    subtitle: subtitle$b,
     conditional,
     options: options$5,
-    buttons: buttons$a,
-    layout: layout$a,
+    buttons: buttons$b,
+    layout: layout$b,
     validation: validation$8
   };
-  const id$9 = "move-type";
-  const title$9 = "What type of location?";
-  const subtitle$9 = "Select the type of location you're moving between";
+  const id$a = "move-type";
+  const title$a = "What type of location?";
+  const subtitle$a = "Select the type of location you're moving between";
   const options$4 = [
     {
       id: "residential",
@@ -25982,13 +26004,13 @@
       type: "service"
     }
   ];
-  const buttons$9 = {
+  const buttons$a = {
     primary: {
       text: "Continue",
       action: "auto"
     }
   };
-  const layout$9 = {
+  const layout$a = {
     type: "grid",
     columns: 1,
     centered: false
@@ -25998,17 +26020,17 @@
     field: "locationType"
   };
   const moveTypeData = {
-    id: id$9,
-    title: title$9,
-    subtitle: subtitle$9,
+    id: id$a,
+    title: title$a,
+    subtitle: subtitle$a,
     options: options$4,
-    buttons: buttons$9,
-    layout: layout$9,
+    buttons: buttons$a,
+    layout: layout$a,
     validation: validation$7
   };
-  const id$8 = "move-size";
-  const title$8 = "What size is your move?";
-  const subtitle$8 = "Select the size that best describes your move";
+  const id$9 = "move-size";
+  const title$9 = "What size is your move?";
+  const subtitle$9 = "Select the size that best describes your move";
   const options$3 = [
     {
       id: "studio",
@@ -26053,13 +26075,13 @@
       type: "button"
     }
   ];
-  const buttons$8 = {
+  const buttons$9 = {
     primary: {
       text: "Continue",
       action: "auto"
     }
   };
-  const layout$8 = {
+  const layout$9 = {
     type: "grid",
     columns: 2,
     centered: false
@@ -26069,19 +26091,19 @@
     field: "moveSize"
   };
   const moveSizeData = {
-    id: id$8,
-    title: title$8,
-    subtitle: subtitle$8,
+    id: id$9,
+    title: title$9,
+    subtitle: subtitle$9,
     options: options$3,
-    buttons: buttons$8,
-    layout: layout$8,
+    buttons: buttons$9,
+    layout: layout$9,
     validation: validation$6
   };
-  const id$7 = "date-selection";
-  const title$7 = "When do you need to move?";
-  const subtitle$7 = "Select your preferred moving date";
+  const id$8 = "date-selection";
+  const title$8 = "When do you need to move?";
+  const subtitle$8 = "Select your preferred moving date";
   const type$3 = "step";
-  const layout$7 = {
+  const layout$8 = {
     type: "calendar",
     centered: true
   };
@@ -26090,27 +26112,27 @@
     field: "moveDate",
     required: true
   };
-  const buttons$7 = {
+  const buttons$8 = {
     primary: {
       text: "Continue",
       action: "auto"
     }
   };
   const dateSelectionData = {
-    id: id$7,
-    title: title$7,
-    subtitle: subtitle$7,
+    id: id$8,
+    title: title$8,
+    subtitle: subtitle$8,
     type: type$3,
-    layout: layout$7,
+    layout: layout$8,
     component,
     validation: validation$5,
-    buttons: buttons$7
+    buttons: buttons$8
   };
-  const id$6 = "time-selection";
-  const title$6 = "What's your preferred start time?";
-  const subtitle$6 = "Choose the time window that works best for you";
+  const id$7 = "time-selection";
+  const title$7 = "What's your preferred start time?";
+  const subtitle$7 = "Choose the time window that works best for you";
   const type$2 = "step";
-  const layout$6 = {
+  const layout$7 = {
     type: "grid",
     columns: 1,
     centered: false
@@ -26145,26 +26167,26 @@
     field: "timeWindow",
     required: true
   };
-  const buttons$6 = {
+  const buttons$7 = {
     primary: {
       text: "Continue",
       action: "auto"
     }
   };
   const timeSelectionData = {
-    id: id$6,
-    title: title$6,
-    subtitle: subtitle$6,
+    id: id$7,
+    title: title$7,
+    subtitle: subtitle$7,
     type: type$2,
-    layout: layout$6,
+    layout: layout$7,
     options: options$2,
     validation: validation$4,
-    buttons: buttons$6
+    buttons: buttons$7
   };
-  const id$5 = "pickup-location";
-  const title$5 = "Where are you moving from?";
-  const subtitle$5 = "Enter your pickup location so we can provide accurate pricing and logistics";
-  const headerIcon$4 = {
+  const id$6 = "pickup-location";
+  const title$6 = "Where are you moving from?";
+  const subtitle$6 = "Enter your pickup location so we can provide accurate pricing and logistics";
+  const headerIcon$5 = {
     name: "MapPin",
     color: "primary",
     background: "primary/10"
@@ -26187,40 +26209,40 @@
       }
     }
   ];
-  const buttons$5 = {
+  const buttons$6 = {
     primary: {
       text: "Continue",
       action: "submit",
       color: "primary"
     }
   };
-  const layout$5 = {
+  const layout$6 = {
     type: "form",
     centered: false
   };
-  const footer$3 = {
+  const footer$4 = {
     note: "Used for accurate pricing and route optimization"
   };
   const pickupLocationData = {
-    id: id$5,
-    title: title$5,
-    subtitle: subtitle$5,
-    headerIcon: headerIcon$4,
+    id: id$6,
+    title: title$6,
+    subtitle: subtitle$6,
+    headerIcon: headerIcon$5,
     fields: fields$1,
-    buttons: buttons$5,
-    layout: layout$5,
-    footer: footer$3
+    buttons: buttons$6,
+    layout: layout$6,
+    footer: footer$4
   };
-  const id$4 = "pickup-challenges";
-  const title$4 = "Pickup Location Challenges";
-  const subtitle$4 = "Help us prepare the right equipment and crew for your pickup location";
+  const id$5 = "pickup-challenges";
+  const title$5 = "Pickup Location Challenges";
+  const subtitle$5 = "Help us prepare the right equipment and crew for your pickup location";
   const type$1 = "step";
-  const headerIcon$3 = {
+  const headerIcon$4 = {
     name: "AlertTriangle",
     color: "amber-500",
     background: "amber-500/10"
   };
-  const layout$4 = {
+  const layout$5 = {
     type: "challenges",
     centered: false
   };
@@ -26271,7 +26293,7 @@
     field: "addresses.pickup.challenges",
     required: false
   };
-  const buttons$4 = {
+  const buttons$5 = {
     secondary: {
       text: "Skip",
       action: "skip"
@@ -26281,26 +26303,26 @@
       action: "submit"
     }
   };
-  const footer$2 = {
+  const footer$3 = {
     note: "This helps us bring the right equipment and estimate time accurately"
   };
   const pickupChallengesData = {
-    id: id$4,
-    title: title$4,
-    subtitle: subtitle$4,
+    id: id$5,
+    title: title$5,
+    subtitle: subtitle$5,
     type: type$1,
-    headerIcon: headerIcon$3,
-    layout: layout$4,
+    headerIcon: headerIcon$4,
+    layout: layout$5,
     challengeType: challengeType$1,
     commonChallenges: commonChallenges$1,
     validation: validation$3,
-    buttons: buttons$4,
-    footer: footer$2
+    buttons: buttons$5,
+    footer: footer$3
   };
-  const id$3 = "destination-location";
-  const title$3 = "Where are you moving to?";
-  const subtitle$3 = "Enter your destination address to complete the route planning";
-  const headerIcon$2 = {
+  const id$4 = "destination-location";
+  const title$4 = "Where are you moving to?";
+  const subtitle$4 = "Enter your destination address to complete the route planning";
+  const headerIcon$3 = {
     name: "Navigation",
     color: "success",
     background: "success/10"
@@ -26323,40 +26345,40 @@
       }
     }
   ];
-  const buttons$3 = {
+  const buttons$4 = {
     primary: {
       text: "Continue",
       action: "submit",
       color: "success"
     }
   };
-  const layout$3 = {
+  const layout$4 = {
     type: "form",
     centered: false
   };
-  const footer$1 = {
+  const footer$2 = {
     note: "Final step for route calculation and logistics planning"
   };
   const destinationLocationData = {
-    id: id$3,
-    title: title$3,
-    subtitle: subtitle$3,
-    headerIcon: headerIcon$2,
+    id: id$4,
+    title: title$4,
+    subtitle: subtitle$4,
+    headerIcon: headerIcon$3,
     fields,
-    buttons: buttons$3,
-    layout: layout$3,
-    footer: footer$1
+    buttons: buttons$4,
+    layout: layout$4,
+    footer: footer$2
   };
-  const id$2 = "destination-challenges";
-  const title$2 = "Destination Challenges";
-  const subtitle$2 = "Help us prepare for any challenges at your destination location";
+  const id$3 = "destination-challenges";
+  const title$3 = "Destination Challenges";
+  const subtitle$3 = "Help us prepare for any challenges at your destination location";
   const type = "step";
-  const headerIcon$1 = {
+  const headerIcon$2 = {
     name: "AlertTriangle",
     color: "success",
     background: "success/10"
   };
-  const layout$2 = {
+  const layout$3 = {
     type: "challenges",
     centered: false
   };
@@ -26407,7 +26429,7 @@
     field: "addresses.destination.challenges",
     required: false
   };
-  const buttons$2 = {
+  const buttons$3 = {
     secondary: {
       text: "Skip",
       action: "skip"
@@ -26417,19 +26439,48 @@
       action: "submit"
     }
   };
-  const footer = {
+  const footer$1 = {
     note: "This helps us plan the delivery and setup process"
   };
   const destinationChallengesData = {
-    id: id$2,
-    title: title$2,
-    subtitle: subtitle$2,
+    id: id$3,
+    title: title$3,
+    subtitle: subtitle$3,
     type,
-    headerIcon: headerIcon$1,
-    layout: layout$2,
+    headerIcon: headerIcon$2,
+    layout: layout$3,
     challengeType,
     commonChallenges,
     validation: validation$2,
+    buttons: buttons$3,
+    footer: footer$1
+  };
+  const id$2 = "route-distance";
+  const title$2 = "Route Calculation";
+  const subtitle$2 = "Calculating driving distance between your pickup and destination locations";
+  const headerIcon$1 = {
+    name: "Navigation",
+    color: "primary",
+    background: "primary/10"
+  };
+  const layout$2 = {
+    type: "route-calculation",
+    centered: true
+  };
+  const buttons$2 = {
+    primary: {
+      text: "Confirm",
+      action: "continue",
+      color: "primary"
+    }
+  };
+  const footer = {};
+  const routeDistanceData = {
+    id: id$2,
+    title: title$2,
+    subtitle: subtitle$2,
+    headerIcon: headerIcon$1,
+    layout: layout$2,
     buttons: buttons$2,
     footer
   };
@@ -26547,6 +26598,7 @@
     "pickup-challenges": pickupChallengesData,
     "destination-location": destinationLocationData,
     "destination-challenges": destinationChallengesData,
+    "route-distance": routeDistanceData,
     "additional-services": additionalServicesData,
     "moving-supplies-question": movingSuppliesQuestionData
   };
@@ -26561,6 +26613,7 @@
     "pickup-challenges",
     "destination-location",
     "destination-challenges",
+    "route-distance",
     "additional-services",
     "moving-supplies-question",
     "moving-supplies-selection",
@@ -26597,7 +26650,7 @@
     const currentStepId = STEP_ORDER[currentStep];
     const isDataDriven = Boolean(currentStepData);
     const isLegacyComponent = LEGACY_COMPONENTS$1.includes(currentStepId);
-    const hybridComponents = ["moving-supplies-selection", "review-details", "contact"];
+    const hybridComponents = ["moving-supplies-selection", "review-details", "contact", "route-distance"];
     if (!isDataDriven && !hybridComponents.includes(currentStepId)) {
       return null;
     }
@@ -26619,6 +26672,10 @@
       }
       if (currentStepId === "contact" && window.contactInfoNavigation) {
         window.contactInfoNavigation.handleContinue();
+        return;
+      }
+      if (currentStepId === "route-distance" && window.routeCalculationNavigation) {
+        window.routeCalculationNavigation.handleContinue();
         return;
       }
       if (validateCurrentStep()) {
@@ -26643,6 +26700,9 @@
     } else if (currentStepId === "contact" && window.contactInfoNavigation) {
       canSkip = window.contactInfoNavigation.canSkip;
       buttonText = window.contactInfoNavigation.buttonText;
+    } else if (currentStepId === "route-distance" && window.routeCalculationNavigation) {
+      canSkip = window.routeCalculationNavigation.canSkip;
+      buttonText = window.routeCalculationNavigation.buttonText;
     }
     return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bg-card border-t border-border/30 px-6 py-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-3", children: [
       canSkip && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
@@ -26864,6 +26924,447 @@
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-7 gap-1", children: renderCalendarDays() }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-4 text-xs text-muted-foreground text-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx("p", { children: "Weekends are highlighted in yellow" }) })
     ] });
+  }
+  function MapboxAutofill({
+    value,
+    onChange,
+    placeholder,
+    label,
+    icon: IconComponent
+  }) {
+    console.log("🗺️ MapboxAutofill component mounted with props:", {
+      value,
+      placeholder,
+      label,
+      hasIcon: !!IconComponent,
+      hasOnChange: !!onChange
+    });
+    const [selectedFromAutocomplete, setSelectedFromAutocomplete] = reactExports.useState(false);
+    const [showConfirmDialog, setShowConfirmDialog] = reactExports.useState(false);
+    const [manualAddress, setManualAddress] = reactExports.useState("");
+    const [suggestions, setSuggestions] = reactExports.useState([]);
+    const [isLoading, setIsLoading] = reactExports.useState(false);
+    const [showSuggestions, setShowSuggestions] = reactExports.useState(false);
+    const [activeSuggestion, setActiveSuggestion] = reactExports.useState(-1);
+    reactExports.useEffect(() => {
+      console.log("🔄 State update - suggestions:", suggestions.length, "showSuggestions:", showSuggestions);
+    }, [suggestions, showSuggestions]);
+    const inputRef = reactExports.useRef(null);
+    const suggestionsRef = reactExports.useRef(null);
+    const debounceRef = reactExports.useRef(null);
+    reactExports.useEffect(() => {
+      const testWordPressAPI = async () => {
+        var _a;
+        try {
+          console.log("🧪 Testing WordPress Mapbox API endpoint...");
+          const apiUrl = ((_a = window.moovinleadsData) == null ? void 0 : _a.apiUrl) || "/wp-json/moovinleads/v1/";
+          const testUrl = `${apiUrl}mapbox/suggest?q=new%20york&limit=1`;
+          console.log("🌐 API URL:", testUrl);
+          const response = await fetch(testUrl);
+          console.log("🧪 WordPress API status:", response.status);
+          if (response.ok) {
+            const data = await response.json();
+            console.log("✅ WordPress API working:", data);
+          } else {
+            const errorText = await response.text();
+            console.error("❌ WordPress API failed:", response.status, errorText);
+          }
+        } catch (error) {
+          console.error("❌ WordPress API test error:", error);
+        }
+      };
+      testWordPressAPI();
+    }, []);
+    const fetchSuggestions = async (query) => {
+      var _a;
+      if (!query || query.length < 2) {
+        setSuggestions([]);
+        setShowSuggestions(false);
+        return;
+      }
+      setIsLoading(true);
+      try {
+        const apiUrl = ((_a = window.moovinleadsData) == null ? void 0 : _a.apiUrl) || "/wp-json/moovinleads/v1/";
+        const url = `${apiUrl}mapbox/suggest?q=${encodeURIComponent(query)}&types=address&country=US&limit=5`;
+        console.log("🔍 Fetching suggestions from:", url);
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`API returned ${response.status}`);
+        }
+        const data = await response.json();
+        console.log("💡 Received suggestions:", data);
+        let suggestions2 = [];
+        if (data.suggestions && Array.isArray(data.suggestions)) {
+          suggestions2 = data.suggestions;
+        } else if (data.features && Array.isArray(data.features)) {
+          suggestions2 = data.features;
+        } else if (Array.isArray(data)) {
+          suggestions2 = data;
+        }
+        console.log("✅ Loaded", suggestions2.length, "suggestions");
+        setSuggestions(suggestions2);
+        setShowSuggestions(suggestions2.length > 0);
+      } catch (error) {
+        console.error("❌ Error fetching suggestions:", error);
+        setSuggestions([]);
+        setShowSuggestions(false);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    const debouncedSearch = (query) => {
+      if (debounceRef.current) {
+        clearTimeout(debounceRef.current);
+      }
+      debounceRef.current = setTimeout(() => {
+        fetchSuggestions(query);
+      }, 300);
+    };
+    const handleInputChange = (e) => {
+      const newValue = e.target.value;
+      console.log("📝 Input changed:", newValue);
+      setSelectedFromAutocomplete(false);
+      setActiveSuggestion(-1);
+      onChange(newValue);
+      debouncedSearch(newValue);
+    };
+    const handleSuggestionSelect = (suggestion) => {
+      var _a;
+      console.log("🎯 Suggestion selected:", suggestion);
+      const address = suggestion.full_address || suggestion.place_formatted || suggestion.address || suggestion.name || suggestion.place_name || ((_a = suggestion.properties) == null ? void 0 : _a.full_address) || suggestion.text;
+      if (address) {
+        console.log("✅ Setting address from suggestion:", address);
+        setSelectedFromAutocomplete(true);
+        setShowSuggestions(false);
+        setActiveSuggestion(-1);
+        onChange(address);
+      } else {
+        console.warn("⚠️ No address found in suggestion:", suggestion);
+      }
+    };
+    const handleKeyDown = (e) => {
+      var _a;
+      switch (e.key) {
+        case "ArrowDown":
+          e.preventDefault();
+          if (!showSuggestions && suggestions.length > 0) {
+            setShowSuggestions(true);
+            setActiveSuggestion(0);
+          } else if (showSuggestions && suggestions.length > 0) {
+            setActiveSuggestion(
+              (prev) => prev < suggestions.length - 1 ? prev + 1 : 0
+            );
+          }
+          break;
+        case "ArrowUp":
+          e.preventDefault();
+          if (showSuggestions && suggestions.length > 0) {
+            setActiveSuggestion(
+              (prev) => prev > 0 ? prev - 1 : suggestions.length - 1
+            );
+          }
+          break;
+        case "Enter":
+          if (showSuggestions && activeSuggestion >= 0 && suggestions[activeSuggestion]) {
+            e.preventDefault();
+            handleSuggestionSelect(suggestions[activeSuggestion]);
+          }
+          break;
+        case "Escape":
+          e.preventDefault();
+          setShowSuggestions(false);
+          setActiveSuggestion(-1);
+          (_a = inputRef.current) == null ? void 0 : _a.blur();
+          break;
+        case "Tab":
+          if (showSuggestions) {
+            setShowSuggestions(false);
+            setActiveSuggestion(-1);
+          }
+          break;
+      }
+    };
+    const handleFocus = () => {
+      console.log("🎯 Input focused");
+      if (value && suggestions.length > 0) {
+        setShowSuggestions(true);
+        setActiveSuggestion(-1);
+      }
+    };
+    const handleBlur = (e) => {
+      setTimeout(() => {
+        var _a;
+        if (!((_a = suggestionsRef.current) == null ? void 0 : _a.contains(document.activeElement))) {
+          setShowSuggestions(false);
+          setActiveSuggestion(-1);
+        }
+      }, 200);
+    };
+    reactExports.useEffect(() => {
+      if (activeSuggestion >= 0 && suggestionsRef.current) {
+        const activeElement = suggestionsRef.current.querySelector(`#suggestion-${activeSuggestion}`);
+        if (activeElement) {
+          activeElement.scrollIntoView({
+            block: "nearest",
+            behavior: "smooth"
+          });
+        }
+      }
+    }, [activeSuggestion]);
+    const handleConfirmAddress = () => {
+      setSelectedFromAutocomplete(true);
+      setShowConfirmDialog(false);
+      onChange(manualAddress);
+    };
+    const handleCancelAddress = () => {
+      setShowConfirmDialog(false);
+      onChange("");
+    };
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("label", { className: "text-sm font-medium text-foreground", children: label }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative group", children: [
+          IconComponent && /* @__PURE__ */ jsxRuntimeExports.jsx(IconComponent, { className: "input-icon group-focus-within:text-primary" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "input",
+            {
+              ref: inputRef,
+              type: "text",
+              value,
+              onChange: handleInputChange,
+              onKeyDown: handleKeyDown,
+              onFocus: handleFocus,
+              onBlur: handleBlur,
+              placeholder,
+              autoComplete: "off",
+              "aria-expanded": showSuggestions,
+              "aria-haspopup": "listbox",
+              "aria-activedescendant": activeSuggestion >= 0 ? `suggestion-${activeSuggestion}` : void 0,
+              className: `
+              w-full pl-12 pr-12 py-3 border rounded-xl text-sm
+              transition-all duration-200 placeholder:text-muted-foreground/60
+              border-border hover:border-border/80 focus:border-primary 
+              focus:ring-4 focus:ring-primary/10 focus:outline-none 
+              bg-background/50 hover:bg-background
+            `
+            }
+          ),
+          isLoading && /* @__PURE__ */ jsxRuntimeExports.jsx(LoaderCircle, { className: "input-icon-right animate-spin" }),
+          selectedFromAutocomplete && value && !isLoading && /* @__PURE__ */ jsxRuntimeExports.jsx(Check, { className: "input-icon-right text-success" })
+        ] }),
+        showSuggestions && suggestions.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "div",
+          {
+            ref: suggestionsRef,
+            className: "\n              absolute top-full left-0 right-0 mt-1 bg-background border border-border \n              rounded-lg shadow-lg z-50 max-h-60 overflow-y-auto\n              animate-in fade-in-0 slide-in-from-top-2 duration-200\n            ",
+            role: "listbox",
+            style: {
+              backgroundColor: "var(--color-background)",
+              borderColor: "var(--color-border)",
+              boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)"
+            },
+            children: suggestions.map((suggestion, index) => {
+              var _a, _b;
+              const address = suggestion.full_address || suggestion.place_formatted || suggestion.address || suggestion.name || suggestion.place_name || ((_a = suggestion.properties) == null ? void 0 : _a.full_address) || suggestion.text || "Unknown address";
+              const suggestionId = suggestion.mapbox_id || suggestion.id || ((_b = suggestion.properties) == null ? void 0 : _b.mapbox_id) || index;
+              const isActive = index === activeSuggestion;
+              return /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "button",
+                {
+                  id: `suggestion-${index}`,
+                  role: "option",
+                  "aria-selected": isActive,
+                  type: "button",
+                  onClick: () => handleSuggestionSelect(suggestion),
+                  className: `
+                      w-full px-4 py-3 text-left hover:bg-muted/50 transition-colors
+                      border-b border-border/30 last:border-b-0 text-sm
+                      ${isActive ? "bg-muted/50" : ""}
+                    `,
+                  children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(MapPin, { className: "w-4 h-4 text-muted-foreground flex-shrink-0" }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-foreground", children: address })
+                  ] })
+                },
+                suggestionId
+              );
+            })
+          }
+        )
+      ] }),
+      showConfirmDialog && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "fixed inset-0 z-[1000000] flex items-center justify-center bg-black/50 backdrop-blur-sm", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-card border border-border rounded-xl p-6 shadow-2xl max-w-md mx-4 animate-in fade-in-0 slide-in-from-bottom-4 duration-300", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start gap-4 mb-4", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-shrink-0 w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(TriangleAlert, { className: "w-5 h-5 text-amber-600" }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-semibold text-foreground mb-2", children: "Address is different from what we found" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground mb-3", children: "We couldn't find this exact address in our suggestions. Is this address correct?" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bg-muted/50 rounded-lg p-3 border border-border/50", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start gap-2", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(MapPin, { className: "w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm font-medium text-foreground", children: manualAddress })
+            ] }) })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex gap-3", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              onClick: handleCancelAddress,
+              className: "flex-1 py-2.5 px-4 border border-border rounded-lg text-sm font-medium text-foreground hover:bg-muted/50 transition-colors",
+              children: "Let me fix it"
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
+            {
+              onClick: handleConfirmAddress,
+              className: "flex-1 py-2.5 px-4 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors",
+              children: "Confirm address"
+            }
+          )
+        ] })
+      ] }) })
+    ] });
+  }
+  function RouteCalculation({ pickupAddress, destinationAddress, onComplete }) {
+    var _a, _b;
+    const [isLoading, setIsLoading] = reactExports.useState(true);
+    const [routeData, setRouteData] = reactExports.useState(null);
+    const [error, setError] = reactExports.useState(null);
+    const [showConfirmation, setShowConfirmation] = reactExports.useState(false);
+    reactExports.useEffect(() => {
+      if (pickupAddress && destinationAddress) {
+        calculateRoute();
+      }
+    }, [pickupAddress, destinationAddress]);
+    const handleConfirmRoute = () => {
+      var _a2, _b2;
+      const distance2 = ((_a2 = routeData == null ? void 0 : routeData.distance) == null ? void 0 : _a2.miles) || 10;
+      const duration = ((_b2 = routeData == null ? void 0 : routeData.duration) == null ? void 0 : _b2.minutes) || 20;
+      console.log("✅ User confirmed route:", { distance: distance2, duration });
+      onComplete({
+        routeDistance: distance2,
+        routeDuration: duration,
+        routeData
+      });
+    };
+    reactExports.useEffect(() => {
+      window.routeCalculationNavigation = {
+        handleContinue: handleConfirmRoute,
+        canSkip: false,
+        buttonText: "Confirm"
+      };
+      return () => {
+        delete window.routeCalculationNavigation;
+      };
+    }, [routeData]);
+    const calculateRoute = async () => {
+      var _a2;
+      setIsLoading(true);
+      setError(null);
+      try {
+        console.log("🗺️ Calculating route from:", pickupAddress, "to:", destinationAddress);
+        const apiUrl = ((_a2 = window.moovinleadsData) == null ? void 0 : _a2.apiUrl) || "/wp-json/moovinleads/v1/";
+        const url = `${apiUrl}mapbox/directions?pickup=${encodeURIComponent(pickupAddress)}&destination=${encodeURIComponent(destinationAddress)}`;
+        console.log("🔍 Fetching route from:", url);
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`API returned ${response.status}`);
+        }
+        const data = await response.json();
+        console.log("📍 Route calculated:", data);
+        setRouteData(data);
+        setShowConfirmation(true);
+      } catch (err) {
+        console.error("❌ Route calculation error:", err);
+        setError(err.message);
+        setRouteData({
+          distance: { miles: 10, text: "10 miles (estimated)" },
+          duration: { minutes: 20, text: "20 min (estimated)" }
+        });
+        setShowConfirmation(true);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    if (error) {
+      return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center space-y-6 text-center", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(TriangleAlert, { className: "w-8 h-8 text-amber-600" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-lg font-semibold text-foreground", children: "Route Calculation Issue" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground max-w-md", children: "We couldn't calculate the exact route, but we'll use an estimated distance for your quote." })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "animate-pulse text-sm text-muted-foreground", children: "Continuing with estimate..." })
+      ] });
+    }
+    if (isLoading) {
+      return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center space-y-6 text-center", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(LoaderCircle, { className: "w-8 h-8 text-primary animate-spin" }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "text-lg font-semibold text-foreground", children: "Calculating Route" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground max-w-md", children: "We're calculating the driving distance between your locations to provide an accurate estimate." })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-3 w-full max-w-sm", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 p-3 bg-muted/30 rounded-lg", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(MapPin, { className: "w-4 h-4 text-muted-foreground" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: "From" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-medium text-foreground truncate", children: pickupAddress })
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Navigation$1, { className: "w-5 h-5 text-primary animate-pulse" }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 p-3 bg-muted/30 rounded-lg", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(MapPin, { className: "w-4 h-4 text-muted-foreground" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: "To" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm font-medium text-foreground truncate", children: destinationAddress })
+            ] })
+          ] })
+        ] })
+      ] });
+    }
+    if (showConfirmation && routeData) {
+      const distance2 = ((_a = routeData == null ? void 0 : routeData.distance) == null ? void 0 : _a.miles) || 10;
+      const travelCost = distance2 * 4;
+      return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col items-center space-y-6 text-center", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-2 gap-4 w-full max-w-sm", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-4 bg-card border border-border rounded-lg", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-center gap-2 mb-2", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Navigation$1, { className: "w-4 h-4 text-primary" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs font-medium text-muted-foreground uppercase tracking-wide", children: "Distance" })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-2xl font-bold text-foreground", children: ((_b = routeData == null ? void 0 : routeData.distance) == null ? void 0 : _b.text) || "N/A" })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-4 bg-card border border-border rounded-lg", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-center gap-2 mb-2", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(DollarSign, { className: "w-4 h-4 text-green-600" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs font-medium text-muted-foreground uppercase tracking-wide", children: "Travel Cost" })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "text-2xl font-bold text-green-600", children: [
+              "$",
+              travelCost
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "w-full max-w-sm bg-card border border-border rounded-lg", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start gap-3 p-4", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(MapPin, { className: "w-4 h-4 text-green-600 flex-shrink-0 mt-5" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-medium text-muted-foreground mb-1 text-left", children: "Pickup" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-foreground truncate", children: pickupAddress })
+            ] })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "border-t border-border/20" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start gap-3 p-4", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(MapPin, { className: "w-4 h-4 text-primary flex-shrink-0 mt-5" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs font-medium text-muted-foreground mb-1 text-left", children: "Destination" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-foreground truncate", children: destinationAddress })
+            ] })
+          ] })
+        ] })
+      ] });
+    }
+    return null;
   }
   function WelcomeBack({ savedMove, onSelectMove, onNewMove }) {
     var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x;
@@ -27179,9 +27680,8 @@
       var _a2, _b2;
       const fieldPath = ((_a2 = field.validation) == null ? void 0 : _a2.field) || "";
       const currentValue = fieldPath.split(".").reduce((obj, key) => obj == null ? void 0 : obj[key], formData) || "";
-      const handleAddressChange = (e) => {
+      const handleAddressChange = (value) => {
         var _a3, _b3;
-        const value = e.target.value;
         if (fieldPath === "addresses.pickup.address") {
           updateFormData("addresses", {
             ...formData.addresses,
@@ -27206,22 +27706,16 @@
       const isPickupLocation = fieldPath === "addresses.pickup.address";
       const locationLabel = isPickupLocation ? "Pickup Location" : "Destination";
       return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-6", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("label", { className: "text-sm font-medium text-foreground", children: field.label }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative group mt-3", children: [
-            IconComponent && /* @__PURE__ */ jsxRuntimeExports.jsx(IconComponent, { className: "input-icon group-focus-within:text-primary" }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(
-              "input",
-              {
-                type: "text",
-                value: currentValue,
-                onChange: handleAddressChange,
-                placeholder: field.placeholder,
-                className: "\n                w-full pl-12 pr-4 py-3 border rounded-xl text-sm\n                transition-all duration-200 placeholder:text-muted-foreground/60\n                border-border hover:border-border/80 focus:border-primary \n                focus:ring-4 focus:ring-primary/10 focus:outline-none \n                bg-background/50 hover:bg-background\n              "
-              }
-            )
-          ] })
-        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          MapboxAutofill,
+          {
+            value: currentValue,
+            onChange: handleAddressChange,
+            placeholder: field.placeholder,
+            label: field.label,
+            icon: IconComponent
+          }
+        ),
         currentValue && ((_b2 = field.features) == null ? void 0 : _b2.googleMapsPreview) && /* @__PURE__ */ jsxRuntimeExports.jsx(
           MapboxPreview,
           {
@@ -27421,6 +27915,26 @@
         ] })
       ] });
     };
+    const renderRouteCalculation = () => {
+      var _a2, _b2, _c2, _d2;
+      const pickupAddress = (_b2 = (_a2 = formData.addresses) == null ? void 0 : _a2.pickup) == null ? void 0 : _b2.address;
+      const destinationAddress = (_d2 = (_c2 = formData.addresses) == null ? void 0 : _c2.destination) == null ? void 0 : _d2.address;
+      const handleRouteComplete = (routeInfo) => {
+        console.log("🗺️ Route calculation complete:", routeInfo);
+        updateFormData("routeDistance", routeInfo.routeDistance);
+        updateFormData("routeDuration", routeInfo.routeDuration);
+        updateFormData("routeData", routeInfo.routeData);
+        nextStep();
+      };
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(
+        RouteCalculation,
+        {
+          pickupAddress,
+          destinationAddress,
+          onComplete: handleRouteComplete
+        }
+      );
+    };
     const renderContent = () => {
       var _a2, _b2;
       const { type: type2 = "grid" } = stepData.layout || {};
@@ -27431,6 +27945,8 @@
           return renderChallenges();
         case "form":
           return renderForm();
+        case "route-calculation":
+          return renderRouteCalculation();
         case "list":
           return renderServiceOptions();
         case "grid":
@@ -27890,7 +28406,7 @@
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("label", { className: "block text-sm font-medium text-foreground mb-1", children: "First Name" }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(User, { className: "absolute left-3 top-3 w-4 h-4 text-muted-foreground" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(User, { className: "input-icon" }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(
                 "input",
                 {
@@ -27911,7 +28427,7 @@
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx("label", { className: "block text-sm font-medium text-foreground mb-1", children: "Last Name" }),
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(User, { className: "absolute left-3 top-3 w-4 h-4 text-muted-foreground" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(User, { className: "input-icon" }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(
                 "input",
                 {
@@ -27933,7 +28449,7 @@
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("label", { className: "block text-sm font-medium text-foreground mb-1", children: "Email" }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Mail, { className: "absolute left-3 top-3 w-4 h-4 text-muted-foreground" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Mail, { className: "input-icon" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "input",
               {
@@ -27954,7 +28470,7 @@
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("label", { className: "block text-sm font-medium text-foreground mb-1", children: "Phone" }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Phone, { className: "absolute left-3 top-3 w-4 h-4 text-muted-foreground" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Phone, { className: "input-icon" }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "input",
               {
@@ -28760,7 +29276,7 @@
       const launchVoiceflow = () => {
         if (window.voiceflow && window.voiceflow.chat && voiceflowRef.current) {
           const leadData = window.leadData;
-          localStorage.setItem("moovinleads_review", JSON.stringify(leadData));
+          localStorage.setItem("moovinleads_review", JSON.stringify(window.leadData));
           window.voiceflow.chat.load({
             verify: { projectID: "68810d435cc97ae487533abe" },
             url: "https://general-runtime.voiceflow.com",
@@ -28781,7 +29297,7 @@
               target: voiceflowRef.current
             },
             assistant: {
-              stylesheet: "/wp-content/uploads/moover/chat.css"
+              stylesheet: "/wp-content/uploads/2025/07/style.css"
             },
             autostart: true
           });

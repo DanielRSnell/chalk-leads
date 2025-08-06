@@ -1,0 +1,316 @@
+/*-- -------------------------- -->
+<---          Reviews           -->
+<--- -------------------------- -*/
+
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+    [data-component="testimonials"] {
+        padding: var(--sectionPadding);
+        background-color: #fff;
+        position: relative;
+        z-index: 1;
+
+        &:before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            opacity: .05;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .cs-container {
+            @include content-container;
+            /* 24px - 64px top & bottom */
+            /* 16px - 64px left & right */
+            padding: calc(clamp(1.5rem, 4vw, 3.75rem) + 1rem) clamp(1rem, 4vw, 3.75rem);
+            background-color: #fff;
+            border-radius: calc(16/16 * 1rem);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* 48px - 64px */
+            gap: clamp(3rem, 6vw, 4rem);
+        }
+
+        .cs-content {
+            /* set text align to left if content needs to be left aligned */
+            text-align: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            /* centers content horizontally, set to flex-start to left align */
+            align-items: center;
+        }
+
+        .cs-button-solid {
+            font-size: calc(16/16 * 1rem);
+            /* 46px - 56px */
+            line-height: clamp(2.875em, 5.5vw, 3.5em);
+            text-decoration: none;
+            font-weight: 700;
+            text-align: center;
+            margin: 0;
+            color: #fff;
+            min-width: calc(150/16 * 1rem);
+            padding: 0 calc(24/16 * 1rem);
+            background-color: var(--primary);
+            border-radius: calc(100/16 * 1rem);
+            overflow: hidden;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            /* prevents padding from adding to the width */
+            box-sizing: border-box;
+
+            &:before {
+                content: "";
+                position: absolute;
+                height: 100%;
+                width: 0%;
+                background: #000;
+                opacity: 1;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                border-radius: calc(4/16 * 1rem);
+                transition: width 0.3s;
+            }
+
+            &:hover {
+                &:before {
+                    width: 100%;
+                }
+            }
+        }
+
+        .cs-button-solid {
+            /* prevents flexbox from squishing it */
+            flex: none;
+        }
+
+        .cs-card-group {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            /* 16px - 20px */
+            gap: clamp(1rem, 2.5vw, 1.25rem);
+        }
+
+        .cs-item {
+            list-style: none;
+            width: 100%;
+            /* 16px - 24px */
+            padding: clamp(1rem, 2.15vw, 1.25rem);
+            border-radius: calc(16/16 * 1rem);
+            overflow: hidden;
+            /* prevents padding from adding to height and width */
+            box-sizing: border-box;
+            background-color: #fff;
+            display: flex;
+            grid-column: span 12;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+
+            &:before {
+                content: '';
+                width: 100%;
+                height: 100%;
+                background: var(--primary);
+                opacity: .05;
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+            }
+        }
+
+        .cs-quote {
+            /* changes to 34px at tablet */
+            margin-bottom: calc(48/16 * 1rem);
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: calc(16/16 * 1rem);
+        }
+
+        .cs-icon-wrapper {
+            width: calc(62/16 * 1rem);
+            height: calc(56/16 * 1rem);
+            border-radius: calc(8/16 * 1rem);
+            background-color: #fff;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* prevents flexbox from squishing it */
+            flex: none;
+            position: relative;
+            z-index: 1;
+
+            &:before {
+                content: '';
+                width: 100%;
+                height: 100%;
+                background: var(--primary);
+                opacity: .20;
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+            }
+        }
+
+        .cs-icon {
+            width: calc(30/16 * 1rem);
+            height: auto;
+            display: block;
+        }
+
+        .cs-header {
+            /* 20px - 25px */
+            font-size: clamp(1.25rem, 2vw, 1.5625rem);
+            line-height: 1.2em;
+            font-weight: 700;
+            margin: 0;
+            color: var(--headerColor);
+        }
+
+        .cs-review {
+            /* 14px - 16px */
+            font-size: clamp(0.875rem, 1.6vw, 1rem);
+            line-height: 1.5em;
+            margin: 0;
+            margin-bottom: calc(32/16 * 1rem);
+            padding-top: calc(32/16 * 1rem);
+            color: var(--bodyTextColor);
+            border-top: 1px solid #D2D8DF;
+        }
+
+        .cs-flex-group {
+            /* this margin top auto will push everything up and force the cs-flex-group to the bottom of the container. This is to account for review cards with different heights because of more or less text and makes the cards more responsive to changing text */
+            margin-top: auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: calc(12/16 * 1rem);
+        }
+
+        .cs-profile {
+            width: calc(50/16 * 1rem);
+            height: calc(50/16 * 1rem);
+            border-radius: 50%;
+            /* clips image corners to make circle */
+            overflow: hidden;
+            position: relative;
+            display: block;
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                /* makes the image behave like a background image */
+                object-fit: cover;
+            }
+        }
+
+        .cs-name {
+            font-size: calc(20/16 * 1rem);
+            line-height: 1.2em;
+            font-weight: 700;
+            margin: 0;
+            /* in case one card has more text than the other, this pushes up against the review text so the name and title are always at the bottom. Only works if parent is a flexbox */
+            margin-top: auto;
+            color: var(--headerColor);
+            display: block;
+        }
+
+        .cs-job {
+            /* 14px - 16px */
+            font-size: clamp(0.875rem, 1.6vw, 1rem);
+            line-height: 1.5em;
+            font-weight: 400;
+            margin: 0;
+            color: var(--bodyTextColor);
+            display: block;
+        }
+    }
+}
+
+/* Tablet - 768px */
+@media only screen and (min-width: 48rem) {
+    [data-component="testimonials"] {
+        .cs-content {
+            text-align: left;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: calc(32/16 * 1rem);
+        }
+
+        .cs-title {
+            margin: 0;
+        }
+    }
+}
+
+/* Desktop - 1024px */
+@media only screen and (min-width: 64rem) {
+    [data-component="testimonials"] {
+        .cs-container {
+            @include container;
+        }
+
+        .cs-item {
+            grid-column: span 4;
+        }
+
+        .cs-quote {
+            min-height: calc(90/16 * 1rem);
+            margin-bottom: calc(34/16 * 1rem);
+        }
+    }
+}
+
+/* Dark Mode */
+@media only screen and (min-width: 0rem) {
+    body.dark-mode {
+        [data-component="testimonials"] {
+            background-color: rgba(0, 0, 0, .2);
+
+            .cs-container {
+                background-color: rgba(0, 0, 0, .2);
+            }
+
+            .cs-item, .cs-icon-wrapper {
+                background-color: var(--dark);
+            }
+
+            .cs-header, .cs-review, .cs-name, .cs-job {
+                color: var(--bodyTextColotWhite);
+            }
+
+            .cs-review, .cs-job {
+                opacity: .8;
+            }
+
+            .cs-review {
+                border-color: rgba(255, 255, 255, .2);
+            }
+        }
+    }
+}
+                                

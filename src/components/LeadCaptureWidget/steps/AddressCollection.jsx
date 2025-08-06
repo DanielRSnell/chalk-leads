@@ -40,7 +40,7 @@ export function AddressCollection() {
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Pickup Address */}
         <div className="relative">
-          <MapPin className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" />
+          <MapPin className="input-icon" />
           <input
             type="text"
             value={pickupAddress}
@@ -62,7 +62,7 @@ export function AddressCollection() {
         
         {/* Destination Address */}
         <div className="relative">
-          <Navigation className="absolute left-3 top-3 w-5 h-5 text-muted-foreground" />
+          <Navigation className="input-icon" />
           <input
             type="text"
             value={destinationAddress}

@@ -1,0 +1,22 @@
+{
+  "id": "route-distance",
+  "title": "Route Calculation",
+  "subtitle": "Calculating driving distance between your pickup and destination locations",
+  "headerIcon": {
+    "name": "Navigation",
+    "color": "primary",
+    "background": "primary/10"
+  },
+  "layout": {
+    "type": "route-calculation",
+    "centered": true
+  },
+  "buttons": {
+    "primary": {
+      "text": "Confirm",
+      "action": "continue",
+      "color": "primary"
+    }
+  },
+  "footer": {}
+}
